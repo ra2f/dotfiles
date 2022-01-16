@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+# Define environment variables to customize the command line interface
+
+
+# Prevent Erase in Line (EL) to Right (\33[K) in the colored output of grep.
+# Please read grep man page for further information.
+export GREP_COLORS='ne'
+
+# Use Vim
+if [[ -x /usr/bin/vim ]] || command -v vim >/dev/null; then
+    export EDITOR=vim
+fi
+
+# Use most to display man pages using colors
+if [[ -x /usr/bin/most ]] || command -v most >/dev/null; then
+    export MANPAGER=most
+fi
+
+# Enable GCC colors (since GCC 4.8.0)
+export GCC_COLORS=1
+
+# Use nice ls colors
+# dircolors does not know alacritty. Switching temporarily to another term
+OLDTERM="${TERM}"
+export TERM=xterm-256color
+eval "$(dircolors --bourne-shell)"
+TERM="${OLDTERM}"
+export TERM
+
+# Warn about dangerous environment
+if [[ -s /etc/ld.so.preload ]]; then
+    (tput bold && tput setaf 1) 2>/dev/null
+    echo >&2 'Warning: /etc/ld.so.preload is present on this system!'
+    tput sgr0 2>/dev/null
+fi
+
+if [[ -n "${LD_PRELOAD}" ]]; then
+    (tput bold && tput setaf 1) 2>/dev/null
+    echo >&2 'Warning: LD_PRELOAD is set!'
+    tput sgr0 2>/dev/null
+fi
+
+if [[ -n "${LD_LIBRARY_PATH}" ]]; then
+    (tput bold && tput setaf 1) 2>/dev/null
+    echo >&2 'Warning: LD_LIBRARY_PATH is set!'
+    tput sgr0 2>/dev/null
+fi
+

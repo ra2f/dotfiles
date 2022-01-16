@@ -1,0 +1,16 @@
+#!/bin/sh
+echo "AAAAA"
+
+if [ -z $1 ]; then
+  echo "NOOOOOO"
+  return 1
+elif [ "$(echo $1 | rev | cut -c 1)" = / ]; then
+  echo "DIR"
+  mkdir -p $1
+else
+  echo "FILE"
+
+  dir="$(echo $1 | sed 's@[^/]*$@@')"
+  [ -n "$dir" ] && mkdir -p $dir
+  touch $1
+fi
