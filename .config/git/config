@@ -1,4 +1,10 @@
 [alias]
+	# Add file
+	a = add
+
+	# Add all modified files
+	aa = add --all
+
 
 	# View the current working tree status using the short format.
 	s = status -s
@@ -14,7 +20,10 @@
 
 	# Clone a repository including all submodules.
 	c = clone --recursive
-
+	
+	# cherry-pick commit
+	cp = cherry-pick
+	
 	# Commit all changes.
 	ca = !git add -A && git commit -av
 
@@ -75,6 +84,9 @@
 	# Show the user email for the current repository.
 	whoami = config user.email
 
+[commit]
+	verbose = true
+
 [apply]
 
 	# Detect whitespace errors when applying a patch.
@@ -125,7 +137,10 @@
     ff = ff-only
 
 [push]
-    default = simple
+    default = current
+
+[pull]
+    default = current
 
 [status]
     submodulesummary = 1
