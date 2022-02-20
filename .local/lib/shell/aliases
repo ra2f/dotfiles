@@ -70,6 +70,23 @@ if type alias >/dev/null 2>/dev/null; then
     alias ll='ls -l'
     alias lla='ls -l --size --almost-all'
 
+    #fix obvious typo's
+    alias cd..='cd ..'
+
+    ## Colorize the grep command output for ease of use (good for log files)##
+    alias grep='grep --color=auto'
+    alias egrep='egrep --color=auto'
+    alias fgrep='fgrep --color=auto'
+
+    #readable output
+    alias df='df -h'
+
+    #continue download
+    alias wget="wget -c"
+
+    #userlist
+    alias userlist="cut -d: -f1 /etc/passwd"
+
     # Options for grep: highlight results and exclude backup files
     # Do not use GREP_OPTIONS so that directly invoking grep does not enable
     # these options (for example with lgrep alias).
