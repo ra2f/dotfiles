@@ -72,6 +72,11 @@ if type alias >/dev/null 2>/dev/null; then
 
     #fix obvious typo's
     alias cd..='cd ..'
+    alias cd...='cd ../..'
+    alias cd....='cd ../../..'
+    alias ..='cd ..'
+    alias ...='cd ../..'
+    alias ....='cd ../../..'
 
     ## Colorize the grep command output for ease of use (good for log files)##
     alias grep='grep --color=auto'
