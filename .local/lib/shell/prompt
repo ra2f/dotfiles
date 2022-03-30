@@ -102,7 +102,8 @@ __prompt_command() {
     PS1="${term_title}${ps1}${trailing_sep}"
     
     # ensure synchronization between bash memory and history file
-    history -a
+    history -n
+    history -w
     history -c
     history -r
 }
