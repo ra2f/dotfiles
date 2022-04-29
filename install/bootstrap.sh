@@ -43,10 +43,10 @@ sudo -S apt -y install keychain
 # Remove any previous installation and install dotfiles
 cd
 if [ -d "dotfiles" ]; then
-  msg "~/dotfiles alredy exist! Removing ..."
-  rm -rf ~/dotfiles
+  msg "$HOME/dotfiles alredy exist! Removing ..."
+  rm -rf $HOME/dotfiles
 fi
-git clone https://github.com/ra2f/dotfiles.git ~/dotfiles
-bash ~/dotfiles/install/install.sh
+git clone https://github.com/ra2f/dotfiles.git $HOME/dotfiles
+bash $HOME/dotfiles/install/install.sh
 
 if [ -f "$0" ]; then rm "$0"; fi
