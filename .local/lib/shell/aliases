@@ -68,7 +68,7 @@ if type alias >/dev/null 2>/dev/null; then
     # shellcheck disable=SC2139
     alias ls="ls$(get_ls_parameters)"
     alias l='ls'
-    alias la='ls --almost-all'
+    alias la='ls -la'
     alias ll='ls -l'
     alias lla='ls -l --size --almost-all'
 
