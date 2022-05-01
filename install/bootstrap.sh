@@ -12,10 +12,6 @@ if ! exists sudo; then
   exit 127
 fi
 
-if [ "$EUID" -ne 0 ]
-  then echo "Please run as root"
-  exit 1
-fi
 
 DIST=''
 for dist in debian redhat fedora; do
