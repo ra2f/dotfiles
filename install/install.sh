@@ -7,6 +7,8 @@ dotfiles=$HOME/dotfiles
 
 msg "Installing $HOME/.config..."
 cp -TR $dotfiles/.config $HOME/.config
+msg "Setting up Neovim ..."
+nvim --headless +PlugInstall +qa
 
 msg "Installing $HOME/.local..."
 cp -TR $dotfiles/.local $HOME/.local
@@ -20,13 +22,8 @@ cp -f $dotfiles/.bash_logout $HOME/.bash_logout
 msg "Updating $HOME/.bashrc..."
 cp -f $dotfiles/.bashrc $HOME/.bashrc
 
-msg "Updating $HOME/.vimrc..."
-cp -f $dotfiles/.vimrc $HOME/.vimrc
-
 msg "Updating $HOME/.hushlogin..."
 cp -f $dotfiles/.hushlogin $HOME/.hushlogin
-
-msg "Done"
 
 # Source config files
 msg "Sourcing config files"
