@@ -80,27 +80,9 @@ __prompt_command() {
     # Concatenation des elements
     ps1="${reset}${exit_status} ${user}@${host} ${dir}${git}${venv}"
 
-    # # Newline if ps1 is too long with respect to term width
-    # local prompt_width
-    # local term_width
-    # prompt_width="$(__prompt_width "${ps1}")"
-    # term_width="$(tput cols)"
-
-    # if (( "${prompt_width}" + 20 > "${term_width}" )); then
-    #   trailing_sep="\n${dollar} "
-    # else
-    #   trailing_sep="${dollar} "
-    # fi
-
-    # Set the title to user@host:dir
-    case "$TERM" in
-        xterm* | rxvt* | alacritty* )
-            term_title="\[\e]0;\u@\h: \w\a\]"
-            ;;
-    esac
 
     PS1="${term_title}${ps1}${trailing_sep}"
-    
+
     # ensure synchronization between bash memory and history file
     history -a
     history -c
