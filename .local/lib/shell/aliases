@@ -46,7 +46,7 @@ if type alias >/dev/null 2>/dev/null; then
     # rm alias
     alias rm='rm -r'
 
-    #fix obvious typo's
+    # Fix obvious typo's
     alias cd..='cd ..'
     alias cd...='cd ../..'
     alias cd....='cd ../../..'
