@@ -63,7 +63,8 @@ ln -s $(which fdfind) ~/.local/bin/fd
 
 # Node
 curl -sL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-apt-get install npm
+sudo apt update && sudo apt install -y node npm
+
 # Install neovim on amd64
 if [ "$(dpkg --print-architecture)" = "amd64" ];then
   cd $HOME
