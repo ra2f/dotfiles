@@ -1,9 +1,9 @@
 #!/bin/bash
-
 set -eu
 
 msg() { printf "\033[1;34m$1\033[0m\n"; }
-err() { printf "\033[1;31m$1\033[0m\n" 1>&2; return 1; }
+err() { printf "\33[31m[✘]\33[0m $1\033[0m\n" 1>&2; return 1; }
+success() { printf "\33[32m[✔]\33[0m $1\033[0m\n"; }
 exists() { type $1 > /dev/null 2>&1; }
 
 hash -r
@@ -36,7 +36,7 @@ sudo apt -y install git-lfs less nano htop make man-db bash-completion most tree
 sudo apt -y install keychain
 
 # Install neovim on amd64
-if [ "$(dpkg --print-architecture)" = "aarch64" ];then
+if [ "$(dpkg --print-architecture)" = "amd64" ];then
   TEMP_FOLDER="/tmp/neovim_download"
 
   DOWNLOAD_URL=$(curl -s https://api.github.com/repos/neovim/neovim/releases/latest \
@@ -52,15 +52,16 @@ if [ "$(dpkg --print-architecture)" = "aarch64" ];then
 fi
 
 # Remove any previous installation and install dotfiles
-cd $HOME
-if [ -d "dotfiles" ]; then
-  msg "$HOME/dotfiles alredy exist! Removing ..."
-  rm -rf $HOME/dotfiles
+if [ -d "/tmp/dotfiles" ]; then
+  err "/tmp/dotfiles alredy exist! Removing ..."
+  rm -rf /tmp/dotfiles
 fi
 
-git clone https://github.com/ra2f/dotfiles.git $HOME/dotfiles
-bash $HOME/dotfiles/install/install
-rm -rf $HOME/dotfiles
+git clone https://github.com/ra2f/dotfiles.git /tmp/dotfiles
+bash /tmp/dotfiles/install/install
+rm -rf /tmp/dotfiles
 
-# reload .basrc
+# reload .bashrc
 . $HOME/.bashrc
+
+success "Dotfiles installed, reload therminal"
