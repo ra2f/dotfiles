@@ -19,10 +19,10 @@
 
 	# Clone a repository including all submodules.
 	c = clone --recursive
-	
+
 	# cherry-pick commit.
 	cp = cherry-pick
-	
+
 	# Commit all changes with message.
 	ca = "!f() { git add -A && git commit -av -m \"$1\"; }; f"
 
@@ -46,11 +46,11 @@
 	# Amend the currently staged files to the latest commit.
 	amend = commit --amend --reuse-message=HEAD
 
-    # Amend in last commit and push
-    fixup = !git amend && git push -q --force-with-lease
-
-    # Sync with remote
-    sync = !git pull --rebase && git push -q
+	# Amend in last commit and push
+	fixup = !git amend && git push -q --force-with-lease
+  
+	# Sync with remote
+	sync = !git pull --rebase && git push -q
 
 	# Credit an author on the latest commit.
 	credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
