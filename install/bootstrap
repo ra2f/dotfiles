@@ -31,24 +31,30 @@ export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true
 
 sudo apt -y update
 # utilities
-sudo apt -y install git-lfs less nano htop make man-db bash-completion most tree curl wget
-# for ssh
-sudo apt -y install keychain
+sudo apt -y install bash-completion \
+                    build-essential \
+                    curl \
+                    gcc \
+                    git-lfs \
+                    htop \
+                    keychain \
+                    less \
+                    lnav \
+                    man-db \
+                    most \
+                    nano \
+                    tree \
+                    wget
+                    
 
 # Install neovim on amd64
 if [ "$(dpkg --print-architecture)" = "amd64" ];then
-  TEMP_FOLDER="/tmp/neovim_download"
-
-  DOWNLOAD_URL=$(curl -s https://api.github.com/repos/neovim/neovim/releases/latest \
-      | grep "browser_download_url" \
-      | grep "nvim-linux64.deb\"$" \
-      | cut -d '"' -f 4
-  )
-
-  mkdir -p ${TEMP_FOLDER} && \
-      curl -s -L --create-dirs -o ${TEMP_FOLDER}/nvim-linux64.deb "$DOWNLOAD_URL" && \
-      sudo dpkg --install --force-overwrite ${TEMP_FOLDER}/nvim-linux64.deb    
-  rm -rf ${TEMP_FOLDER}
+  cd $HOME
+  curl -s -JLO https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
+	tar xzvf nvim-linux64.tar.gz
+	rm -rdf nvim-linux64.tar.gz
+	mv "$HOME"/nvim-linux64 "$HOME"/.neovim
+	ln -sf "$HOME"/.neovim/bin/nvim "$HOME"/.local/bin/
 fi
 
 # Remove any previous installation and install dotfiles

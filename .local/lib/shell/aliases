@@ -86,9 +86,6 @@ if type alias >/dev/null 2>/dev/null; then
         chown-mine -R "$@"
     }
 
-    # Development
-    alias m=make
-
     # Debian and Ubuntu
     alias apt='sudo apt'
     alias apt-get='sudo apt-get'
