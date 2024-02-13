@@ -92,6 +92,9 @@
 	# Initialize all submodules
 	smu = submodule update --init --recursive
 
+	# Find occurences in repository
+	g = grep --break --heading --line-number
+
 	# Git log with graph
 	lg = !"git lg1"
 	lg1 = !"git lg-fmt-1 --graph --topo-order --abbrev-commit --decorate=full --all"
