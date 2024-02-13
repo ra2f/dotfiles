@@ -50,9 +50,6 @@ Plug 'itchyny/lightline.vim'                   " Status bar
 Plug 'preservim/nerdtree'                      " Nerd tree
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Nerd syntax highlight
 
-" Color scheme
-Plug 'Mofiqul/vscode.nvim'
-
 " Telescope
 Plug 'nvim-lua/plenary.nvim'          " Required lib
 Plug 'nvim-telescope/telescope.nvim'  " Project finder
@@ -199,18 +196,6 @@ nnoremap <silent> <Space>bw :BufferOrderByWindowNumber<CR>
 " Other:
 " :BarbarEnable - enables barbar (enabled by default)
 " :BarbarDisable - very bad command, should never be used
-
-" --------------------------------------------------------------
-"              - Colors -
-" --------------------------------------------------------------
-
-" For dark theme
-let g:vscode_style = "dark"
-" Enable italic comment
-let g:vscode_italic_comment = 1
-" Disable nvim-tree background color
-let g:vscode_disable_nvimtree_bg = v:true
-colorscheme vscode
 
 " --------------------------------------------------------------
 "              - Colors -
