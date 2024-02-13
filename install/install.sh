@@ -5,13 +5,13 @@ set -e
 
 dotfiles=$HOME/dotfiles
 
-msg "Installing $HOME/.config..."
+msg "Updating $HOME/.config..."
 cp -TR $dotfiles/.config $HOME/.config
 chown -R "$SUDO_USER":"$SUDO_USER" $HOME/.config
 msg "Setting up Neovim ..."
 nvim --headless +PlugInstall +qa
 
-msg "Installing $HOME/.local..."
+msg "Updating $HOME/.local..."
 cp -TR $dotfiles/.local $HOME/.local
 chown -R "$SUDO_USER":"$SUDO_USER" $HOME/.local
 
