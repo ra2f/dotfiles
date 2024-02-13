@@ -38,11 +38,13 @@ sudo apt -y install bash-completion \
                     git-lfs \
                     htop \
                     keychain \
+                    lazygit \
                     less \
                     lnav \
                     man-db \
                     most \
                     nano \
+                    tmux \
                     tree \
                     wget
                     
