@@ -23,4 +23,7 @@ cp -f $dotfiles/.bashrc $HOME/.bashrc
 msg "Updating $HOME/.vimrc..."
 cp -f $dotfiles/.vimrc $HOME/.vimrc
 
+msg "Updating $HOME/.hushlogin..."
+cp -f $dotfiles/.hushlogin $HOME/.hushlogin
+
 msg "Done"
