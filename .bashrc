@@ -34,9 +34,9 @@ fi
 # Source configuration files
 # ==========================
 export PATH="$PATH:$HOME/.local/bin"
+
 # Source configuration files
 # ==========================
-
 shell_config_dir="${HOME}/.local/lib/shell"
 
 for shell_file in aliases environment functions prompt 'local'; do
