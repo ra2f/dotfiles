@@ -57,7 +57,10 @@
 
 	# Merge branch with --no-fast-forward
 	mff = merge --no-ff
-	
+
+	# Pull changes and rebase
+	pr = pull --rebase
+
 	# Remove the old tag with this name and tag the latest commit with it.
 	retag = "!r() { git tag -d $1 && git push origin :refs/tags/$1 && git tag $1; }; r"
 
