@@ -52,7 +52,7 @@ map("n", "<leader>|", "<C-W>v", { desc = "Split window right", remap = true })
 
 -- Files
 map("n", "<leader>fn", "<cmd>tabnew <cr>", { desc = "[F]ile [N]ew" })
-map("n", "<leader>fr", "<cmd>Neotree reveal<cr>", { desc = "[F]ile [R]eveal" })
+map("n", "<leader>fe", "<cmd>Neotree reveal<cr>", { desc = "[F]ile [E]xplorer" })
 -- User interface
 map("n", "<leader>ur", "<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><cr>", { desc = "[U]ser [R]eset UI" })
 map("n", "<leader>us", "<cmd>SymbolsOutline<cr>", { desc = "[U]ser [S]ymbols outline" })
@@ -77,7 +77,6 @@ map("n", "<leader>uT", "<cmd>lua vim.treesitter.stop()<cr>", { desc = "[U]ser [T
 
 -- Code
 map("n", "<leader>cg", "<cmd>Neogit<cr>", { desc = "[C]ode neo[G]it" })
-map("n", "<leader>cf", ":lua require('conform').format({ async = true, lsp_fallback = true })<cr>", { desc = "[C]ode [F]ormating" })
 
 -- Remap for dealing with word wrap
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -86,5 +85,4 @@ map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 -- Diagnostic keymaps
 map("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
 map("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
-map("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })

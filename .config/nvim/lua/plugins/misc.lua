@@ -39,6 +39,7 @@ return {
 		config = true,
 	},
 
+
 	{
 		"junegunn/vim-easy-align",
 		cmd = "EasyAlign",

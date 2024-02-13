@@ -14,11 +14,6 @@ local function on_attach(_, bufnr)
   map({ "n" }, "K", vim.lsp.buf.hover, "[C]ode [H]over", opts)
   map({ "n" }, "<C-k>", vim.lsp.buf.signature_help, "[C]ode [S]ignature", opts)
 
-  -- Format
-  --map({ "n" }, "<leader>cf", function()
-  --  vim.lsp.buf.format { async = true }
-  --end, "[C]ode [F]ormat", opts)
-  --map({ "n" }, "<leader>cF", "<cmd>Format<cr>", "Another [C]ode [F]ormater", opts)
 
   -- Some actions & code navigation
   map({ "n" }, "<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", opts)
