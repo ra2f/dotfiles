@@ -88,14 +88,42 @@ if type alias >/dev/null 2>/dev/null; then
     alias egrep='egrep --color=auto'
     alias fgrep='fgrep --color=auto'
 
-    #readable output
+    # readable output
     alias df='df -h'
 
-    #continue download
+    # continue download
     alias wget="wget -c"
 
-    #userlist
+    # userlist
     alias userlist="cut -d: -f1 /etc/passwd"
+
+    # common chmod invocations
+    alias chmod-public='chmod u=rwX,go=rX'
+    alias chmod-public-with-group='chmod ug=rwX,o=rX'
+    alias chmod-private='chmod u=rwX,go='
+    alias chmod-private-with-group='chmod ug=rwX,o='
+    alias rchmod-public='chmod -R u=rwX,go=rX'
+    alias rchmod-public-with-group='chmod -R ug=rwX,o=rX'
+    alias rchmod-private='chmod -R u=rwX,go='
+    alias rchmod-private-with-group='chmod -R ug=rwX,o='
+
+    # common chown invocations
+    chown-mine () {
+        sudo chown "$(id -un):$(id -gn)" "$@"
+    }
+    rchown-mine () {
+        chown-mine -R "$@"
+    }
+
+    # Development
+    alias m=make
+
+    # Debian and Ubuntu
+    alias apt='sudo apt'
+    alias apt-get='sudo apt-get'
+    alias ac='apt-cache show'
+    alias acp='apt-cache policy'
+    alias acs='apt-cache search'
 
     # Options for grep: highlight results and exclude backup files
     # Do not use GREP_OPTIONS so that directly invoking grep does not enable

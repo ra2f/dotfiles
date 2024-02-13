@@ -29,11 +29,11 @@ fi
 msg "Installing basic packages..."
 export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true
 
-sudo -S apt -y update
+sudo apt -y update
 # utilities
-sudo -S apt -y install git less nano htop make man bash-completion 
+sudo apt -y install git less nano htop make man-db bash-completion most
 # for ssh
-sudo -S apt -y install keychain
+sudo apt -y install keychain
 
 # Install neovim
 TEMP_FOLDER="/tmp/neovim_download"
@@ -46,16 +46,19 @@ DOWNLOAD_URL=$(curl -s https://api.github.com/repos/neovim/neovim/releases/lates
 
 mkdir -p ${TEMP_FOLDER} && \
     curl -s -L --create-dirs -o ${TEMP_FOLDER}/nvim-linux64.deb "$DOWNLOAD_URL" && \
-    dpkg --install --force-overwrite ${TEMP_FOLDER}/nvim-linux64.deb    
+    sudo dpkg --install --force-overwrite ${TEMP_FOLDER}/nvim-linux64.deb    
 rm -rf ${TEMP_FOLDER}
 
 # Remove any previous installation and install dotfiles
-cd
+cd $HOME
 if [ -d "dotfiles" ]; then
   msg "$HOME/dotfiles alredy exist! Removing ..."
   rm -rf $HOME/dotfiles
 fi
 
 git clone https://github.com/ra2f/dotfiles.git $HOME/dotfiles
-bash $HOME/dotfiles/install/install.sh
+bash $HOME/dotfiles/install/install
 rm -rf $HOME/dotfiles
+
+# reload .basrc
+source $HOME/.bashrc

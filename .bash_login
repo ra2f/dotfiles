@@ -21,28 +21,6 @@ fi
 
 unset should_launch_ssh_agent
 
-# Display
-# =======
-
-# set DISPLAY to use X terminal in WSL
-if grep -q WSL2 /proc/version; then
-    # execute route.exe in the windows to determine its IP address
-    export DISPLAY=$(awk '/nameserver / {print $2}' /etc/resolv.conf):0.0
-
-else
-    # In WSL1 the DISPLAY can be the localhost address
-    if grep -q icrosoft /proc/version; then
-        export DISPLAY=127.0.0.1:0.0
-    fi
-
-fi
-# Automatically execute vcxsrv.exe on host machine quietly
-if command -v tasklist.exe >/dev/null && \
-            ! tasklist.exe "/fi" "IMAGENAME eq vcxsrv.exe" "/fo" "CSV" | \
-            grep "\"vcxsrv\.exe\"" >/dev/null ; then
-    ("/mnt/c/Program Files/VcXsrv/vcxsrv.exe"  :0 -ac -terminate -lesspointer -multiwindow -clipboard -wgl >/dev/null 2>&1 &) 2>/dev/null
-fi
-
 # Show who is here if it is a login, interactive shell
 # ====================================================
 
