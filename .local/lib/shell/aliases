@@ -68,9 +68,12 @@ if type alias >/dev/null 2>/dev/null; then
     # shellcheck disable=SC2139
     alias ls="ls$(get_ls_parameters)"
     alias l='ls'
-    alias la='ls -la'
-    alias ll='ls -l'
+    alias la='ls -Al --group-directories-first'
+    alias ll='ls -l --group-directories-first'
     alias lla='ls -l --size --almost-all'
+
+    # rm alias
+    alias rm='rm -r'
 
     #fix obvious typo's
     alias cd..='cd ..'
