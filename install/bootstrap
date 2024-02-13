@@ -54,7 +54,7 @@ if [ "$(dpkg --print-architecture)" = "amd64" ];then
   curl -s -JLO https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
 	tar xzvf nvim-linux64.tar.gz
 	rm -rdf nvim-linux64.tar.gz
-  mkdir -p "$HOME/.neovim"
+  rm -rf "$HOME/.neovim" 
 	mv "$HOME"/nvim-linux64 "$HOME"/.neovim
 	ln -sf "$HOME"/.neovim/bin/nvim "$HOME"/.local/bin/
 fi
