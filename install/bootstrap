@@ -34,7 +34,6 @@ sudo apt -y install bash-completion \
                     build-essential \
                     curl \
                     direnv \
-                    fzf \
                     gcc \
                     git-lfs \
                     htop \
