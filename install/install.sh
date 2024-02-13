@@ -6,12 +6,10 @@ set -e
 dotfiles=$HOME/dotfiles
 
 msg "Installing $HOME/.config..."
-[ -d ".config" ] && mv .config .config.$RANDOM.bak
-ln -s $dotfiles/.config
+cp -TR $dotfiles/.config $HOME/.config
 
 msg "Installing $HOME/.local..."
-[ -d ".local" ] && mv .local .local.$RANDOM.bak
-ln -s $dotfiles/.local
+cp -TR $dotfiles/.local $HOME/.local
 
 msg "Updating $HOME/.bash_login..."
 cp -f $dotfiles/.bash_login $HOME/.bash_login
