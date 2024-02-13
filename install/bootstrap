@@ -6,7 +6,6 @@ err() { printf "\33[31m[✘]\33[0m $1\033[0m\n" 1>&2; return 1; }
 success() { printf "\33[32m[✔]\33[0m $1\033[0m\n"; }
 exists() { type $1 > /dev/null 2>&1; }
 
-hash -r
 if ! exists sudo; then
   err "Please install 'sudo' command."
   exit 127
@@ -27,7 +26,7 @@ fi
 
 # Install basic dependencies
 msg "Installing basic packages..."
-export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true
+export DEBIAN_FRONTEND=noninteractive
 
 sudo apt -y update
 # utilities
@@ -56,6 +55,7 @@ if [ "$(dpkg --print-architecture)" = "amd64" ];then
 	rm -rdf nvim-linux64.tar.gz
   rm -rf "$HOME/.neovim" 
 	mv "$HOME"/nvim-linux64 "$HOME"/.neovim
+  mkdir -p "$HOME"/.local/bin/
 	ln -sf "$HOME"/.neovim/bin/nvim "$HOME"/.local/bin/
 fi
 
