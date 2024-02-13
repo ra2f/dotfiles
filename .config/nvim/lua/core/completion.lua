@@ -28,7 +28,6 @@ cmp.setup({
 
 		{ name = "buffer" },
 		{ name = "calc" },
-		{ name = "cmp_tabnine" },
 		{ name = "emoji" },
 	},
 	snippet = {
@@ -62,7 +61,6 @@ cmp.setup({
 		source_names = {
 			buffer = "[Buffer]",
 			calc = "[Calc]",
-			cmp_tabnine = "[Tabnine]",
 			emoji = "[Emoji]",
 			luasnip = "[Snippet]",
 			nvim_lsp = "[LSP]",
@@ -81,7 +79,6 @@ cmp.setup({
 				item.menu = ({
 					buffer = "[Buffer]",
 					calc = "[Calc]",
-					cmp_tabnine = "[Tabnine]",
 					emoji = "[Emoji]",
 					luasnip = "[Snip]",
 					nvim_lsp = "[LSP]",

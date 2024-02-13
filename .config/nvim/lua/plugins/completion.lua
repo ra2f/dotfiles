@@ -28,10 +28,7 @@ return {
 			"hrsh7th/cmp-emoji",
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-path",
-			{
-				"tzachar/cmp-tabnine",
-				build = "./install.sh",
-			},
+
 			-- vs-code like pictograms
 			"onsails/lspkind.nvim", 
 		},
