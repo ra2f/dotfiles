@@ -6,7 +6,7 @@ local M = {
     icons = {
       breadcrumb = icons.arrows.DoubleArrowRight, -- symbol used in the command line area that shows your active key combo
       separator = icons.arrows.SmallArrowRight, -- symbol used between a key and it's label
-      group = icons.ui.Plus, -- symbol prepended to a group
+      group = icons.ui.Operator, -- symbol prepended to a group
     },
     window = {
       border = "none", -- none, single, double, shadow

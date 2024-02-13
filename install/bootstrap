@@ -59,16 +59,16 @@ sudo apt -y install bash-completion \
                     wget
                     
 
-ln -s $(which fdfind) ~/.local/bin/fd
+rm -f ~/.local/bin/fd
+ln -sfn $(which fdfind) ~/.local/bin/fd
 
-# Node
+# NPM
 curl -sL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-sudo apt update && sudo apt install -y node npm
+sudo apt update && sudo apt install -y npm
 
 # Install neovim on amd64
 if [ "$(dpkg --print-architecture)" = "amd64" ];then
   cd $HOME
-  pip3 install neovim
   curl -s -JLO https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
 	tar xzvf nvim-linux64.tar.gz
 	rm -rdf nvim-linux64.tar.gz
