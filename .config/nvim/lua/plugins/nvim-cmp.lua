@@ -67,11 +67,6 @@ cmp.setup({
         return
       end
 
-      -- if require("copilot.suggestion").is_visible() then
-      --   require("copilot.suggestion").accept()
-      --   return
-      -- end
-
       if luasnip.expand_or_locally_jumpable() then
         luasnip.expand_or_jump()
         return
@@ -190,7 +185,6 @@ cmp.setup({
         path = "path",
         tmux = "tmux",
         goimports = "🥅 Go-Imports",
-        copilot = "CoPilot",
       })[entry.source.name]
 
       local kind = require("lspkind").cmp_format({ mode = "symbol", maxwidth = 50 })(entry, vim_item)
