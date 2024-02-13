@@ -1,0 +1,117 @@
+[alias]
+	# Add file
+	a = add
+
+	# Add all modified files
+	aa = add --all
+
+	# View the current working tree status using the short format.
+	s = status -s
+
+	# Show the diff between the latest commit and the current state.
+	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+
+	# `git di $number` shows the diff between the state `$number` revisions ago and the current state.
+	di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
+
+	# Pull in remote changes for the current repository and all its submodules.
+	p = pull --recurse-submodules
+
+	# Clone a repository including all submodules.
+	c = clone --recursive
+	
+	# cherry-pick commit.
+	cp = cherry-pick
+	
+	# Commit all changes with message.
+	ca = "!f() { git add -A && git commit -av -m \"$1\"; }; f"
+
+	# Commit with message.
+	co = "!f() { git commit -m \"$1\"; }; f"
+
+	# Commit with message bypass pre-commit.
+	conv = "!f() { git commit -m \"$1\" --no-verify; }; f"
+
+	# Switch to a branch, creating it if necessary.
+	cb = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+
+	# Show verbose output about tags, branches or remotes
+	tags = tag -l
+	branches = branch --all
+	remotes = remote --verbose
+
+	# List aliases.
+	aliases = config --get-regexp alias
+
+	# Amend the currently staged files to the latest commit.
+	amend = commit --amend --reuse-message=HEAD
+
+    # Amend in last commit and push
+    fixup = !git amend && git push -q --force-with-lease
+
+    # Sync with remote
+    sync = !git pull --rebase && git push -q
+
+	# Credit an author on the latest commit.
+	credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
+
+	# Interactive rebase with the given number of latest commits.
+	reb = "!r() { git rebase -i HEAD~$1; }; r"
+
+	# Rebase current branch on remote branch
+	rebr = "!r() { git pull --rebase origin $1 }; r"
+
+	# Merge branch with --no-fast-forward
+	mff = merge --no-ff
+
+	# Pull changes and rebase
+	pr = pull --rebase
+
+	# Push changes
+	p = push
+
+	# Push changes with force
+	pf = push --force
+
+	# Remove the old tag with this name and tag the latest commit with it.
+	retag = "!r() { git tag -d $1 && git push origin :refs/tags/$1 && git tag $1; }; r"
+
+	# Find branches containing commit
+	fb = "!f() { git branch -a --contains $1; }; f"
+
+	# Find tags containing commit
+	ft = "!f() { git describe --always --contains $1; }; f"
+
+	# Find commits by source code
+	fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
+
+	# Find commits by commit message
+	fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+
+	# Remove branches that have already been merged with main.
+	# a.k.a. ‘delete merged’
+	dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+
+	# Put last commit in staged changes
+	oops = "!git reset --soft HEAD^"
+    
+	# Initialize all submodules
+	smu = submodule update --init --recursive
+
+	# Find occurences in repository
+	g = grep --break --heading --line-number
+
+	# Git log with graph
+	lg = !"git lg1"
+	lg1 = !"git lg-fmt-1 --graph --topo-order --abbrev-commit --decorate=full --all"
+	lg2 = !"git lg-fmt-2 --graph --topo-order --abbrev-commit --decorate=full --all --stat"
+	lg-no-graph = !"git lg-fmt-1 --abbrev-commit --decorate=full"
+
+	lg-fmt-1 = log --format=format:'%Cred%h%Creset %Cgreen(%ar)%Creset%C(auto)%d%Creset %C(bold)%s%Creset %Cblue%C(bold)%an%Creset'
+	lg-fmt-2 = log --format=format:'─┬─ %Cred%h%Creset %Cgreen(%aI, %ar)%Creset%C(auto)%d%Creset%n └─ %C(bold)%s%Creset %Cblue%C(bold)%an%Creset%n'
+
+	# List contributors with number of commits.
+	contributors = shortlog --summary --numbered --email
+
+	# Show the user email for the current repository.
+	whoami = config user.email
