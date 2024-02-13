@@ -12,7 +12,6 @@ if ! exists sudo; then
   exit 127
 fi
 
-
 DIST=''
 for dist in debian redhat fedora; do
   if [ -e "/etc/${dist}-release" ] || [ -e "/etc/${dist}_version" ]; then
@@ -32,9 +31,23 @@ export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true
 
 sudo -S apt -y update
 # utilities
-sudo -S apt -y install git less nano htop vim man bash-completion 
+sudo -S apt -y install git less nano htop make man bash-completion 
 # for ssh
 sudo -S apt -y install keychain
+
+# Install neovim
+TEMP_FOLDER="/tmp/neovim_download"
+
+DOWNLOAD_URL=$(curl -s https://api.github.com/repos/neovim/neovim/releases/latest \
+    | grep "browser_download_url" \
+    | grep "nvim-linux64.deb\"$" \
+    | cut -d '"' -f 4
+)
+
+mkdir -p ${TEMP_FOLDER} && \
+    curl -s -L --create-dirs -o ${TEMP_FOLDER}/nvim-linux64.deb "$DOWNLOAD_URL" && \
+    dpkg --install --force-overwrite ${TEMP_FOLDER}/nvim-linux64.deb    
+rm -rf ${TEMP_FOLDER}
 
 # Remove any previous installation and install dotfiles
 cd
@@ -42,7 +55,7 @@ if [ -d "dotfiles" ]; then
   msg "$HOME/dotfiles alredy exist! Removing ..."
   rm -rf $HOME/dotfiles
 fi
+
 git clone https://github.com/ra2f/dotfiles.git $HOME/dotfiles
 bash $HOME/dotfiles/install/install.sh
-
-if [ -f "$0" ]; then rm "$0"; fi
+rm -rf $HOME/dotfiles
