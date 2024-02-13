@@ -86,23 +86,6 @@ M.spider_keymaps = function()
   end, { desc = "Spider-ge" })
 end
 
-M.copilot_mappings = function()
-  vim.g.copilot_no_tab_map = true
-  vim.keymap.set({ "n", "i" }, "<C-CR>", function()
-    -- vim.cmd("call copilot#Accept('<CR/>')")
-    require("copilot.suggestion").accept()
-  end)
-  vim.keymap.set({ "i" }, "<C-j>", function()
-    require("copilot.suggestion").next()
-  end)
-  vim.keymap.set({ "i" }, "<C-k>", function()
-    require("copilot.suggestion").prev()
-  end)
-  vim.keymap.set({ "i" }, "<C-c>", function()
-    require("copilot.suggestion").prev()
-  end)
-end
-
 M.vim_wordmotion_mappings = function()
   vim.cmd([[
     nmap cw ce

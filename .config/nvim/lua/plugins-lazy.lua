@@ -487,43 +487,6 @@ local function completions()
           { "hrsh7th/cmp-cmdline" },
           { "hrsh7th/cmp-buffer" },
           { "lukas-reineke/cmp-rg" },
-          {
-            "zbirenbaum/copilot.lua",
-            event = events.BufRead,
-            config = function()
-              require("keymaps-for-plugins").copilot_mappings()
-              vim.defer_fn(function()
-                require("copilot").setup({
-                  panel = { enabled = false },
-                  filetypes = {
-                    ["*"] = true,
-                  },
-                  suggestion = {
-                    enabled = true,
-                    auto_trigger = true,
-                    keymap = {
-                      accept = "<C-CR>",
-                      accept_word = false,
-                      accept_line = false,
-                      -- next = "<M-]>",
-                      -- prev = "<M-[>",
-                      -- dismiss = "<C-]>",
-                      next = "<C-j>",
-                      prev = "<C-k>",
-                      dismiss = "<C-c>",
-                    },
-                  },
-                })
-              end, 100)
-            end,
-          },
-          {
-            "zbirenbaum/copilot-cmp",
-            after = { "copilot.lua" },
-            config = function()
-              require("copilot_cmp").setup()
-            end,
-          },
         },
       },
       {
@@ -536,13 +499,6 @@ local function completions()
         commit = "bb3ede8de30efe01b976eda8342ae4d40a5ee91f",
         config = function()
           require("codeium").setup({})
-        end,
-      },
-      {
-        "github/copilot.vim",
-        event = events.BufRead,
-        config = function()
-          require("keymaps-for-plugins").copilot_mappings()
         end,
       },
     },
@@ -566,26 +522,6 @@ local function completions()
         },
         config = function()
           require("plugins.nvim-cmp")
-        end,
-      },
-      {
-        "zbirenbaum/copilot.lua",
-        event = events.BufRead,
-        config = function()
-          require("keymaps-for-plugins").copilot_mappings()
-          vim.defer_fn(function()
-            require("copilot").setup({
-              panel = { enabled = false },
-              filetypes = {
-                ["*"] = true,
-              },
-              suggestion = {
-                enabled = true,
-                auto_trigger = true,
-                keymap = nil,
-              },
-            })
-          end, 100)
         end,
       },
     },
