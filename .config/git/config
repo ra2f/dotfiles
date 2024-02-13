@@ -89,6 +89,9 @@
 	# Put last commit in staged changes
 	oops = "!git reset --soft HEAD^"
     
+	# Initialize all submodules
+	smu = submodule update --init --recursive
+
 	# Git log with graph
 	lg = !"git lg1"
 	lg1 = !"git lg-fmt-1 --graph --topo-order --abbrev-commit --decorate=full --all"
