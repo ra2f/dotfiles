@@ -32,7 +32,7 @@ export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true
 
 sudo -S apt -y update
 # utilities
-sudo -S apt -y install git less nano htop vim
+sudo -S apt -y install git less nano htop vim man
 # for ssh
 sudo -S apt -y install keychain
 
