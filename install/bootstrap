@@ -31,7 +31,7 @@ export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true
 
 sudo apt -y update
 # utilities
-sudo apt -y install git less nano htop make man-db bash-completion most
+sudo apt -y install git less nano htop make man-db bash-completion most tree
 # for ssh
 sudo apt -y install keychain
 
