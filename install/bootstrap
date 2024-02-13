@@ -38,7 +38,6 @@ sudo apt -y install bash-completion \
                     git-lfs \
                     htop \
                     keychain \
-                    lazygit \
                     less \
                     lnav \
                     man-db \
