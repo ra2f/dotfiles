@@ -5,7 +5,6 @@
 	# Add all modified files
 	aa = add --all
 
-
 	# View the current working tree status using the short format.
 	s = status -s
 
@@ -21,11 +20,17 @@
 	# Clone a repository including all submodules.
 	c = clone --recursive
 	
-	# cherry-pick commit
+	# cherry-pick commit.
 	cp = cherry-pick
 	
-	# Commit all changes.
-	ca = !git add -A && git commit -av
+	# Commit all changes with message.
+	ca = "!f() { git add -A && git commit -av -m \"$1\"; }; f"
+
+	# Commit with message.
+	co = "!f() { git commit -m \"$1\"; }; f"
+
+	# Commit with message bypass pre-commit.
+	conv = "!f() { git commit -m \"$1\" --no-verify; }; f"
 
 	# Switch to a branch, creating it if necessary.
 	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
