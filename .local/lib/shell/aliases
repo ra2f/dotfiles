@@ -36,37 +36,8 @@ if type alias >/dev/null 2>/dev/null; then
     # Make "strings" never treat files as objects (more secure)
     alias strings='strings --all'
 
-    # List files, using available ls options
-    get_ls_parameters() {
-        local LINE COLOR_OPT ESCAPE_OPT TIMESTYLE_OPT
-        # CFh = columns, classify, human
-        printf ' -C --classify --human-readable'
-        # shellcheck disable=SC2012
-        ls --help 2>&1 | (
-            COLOR_OPT=
-            ESCAPE_OPT=
-            TIMESTYLE_OPT=
-            while IFS= read -r LINE; do
-                case "$LINE" in
-                    *--color*)
-                        COLOR_OPT=' --color=always'
-                        ;;
-                    *--escape*)
-                        ESCAPE_OPT=' --escape'
-                        ;;
-                    *--time-style*)
-                        # the backslashed values get replaced by printf
-                        TIMESTYLE_OPT=' --time-style="+\033[0;35m%%Y-%%m-%%d %%H:%%M\033[0m"'
-                        ;;
-                esac
-            done
-            # shellcheck disable=SC2059
-            printf "$COLOR_OPT$ESCAPE_OPT$TIMESTYLE_OPT"
-        )
-    }
-
-    # shellcheck disable=SC2139
-    alias ls="ls$(get_ls_parameters)"
+    # ls
+    alias ls="ls --color=auto"
     alias l='ls'
     alias la='ls -Al --group-directories-first'
     alias ll='ls -l --group-directories-first'
