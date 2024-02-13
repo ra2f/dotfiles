@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 set -eu
 
@@ -50,6 +50,7 @@ if [ "$(dpkg --print-architecture)" = "aarch64" ];then
       sudo dpkg --install --force-overwrite ${TEMP_FOLDER}/nvim-linux64.deb    
   rm -rf ${TEMP_FOLDER}
 fi
+
 # Remove any previous installation and install dotfiles
 cd $HOME
 if [ -d "dotfiles" ]; then
@@ -62,4 +63,4 @@ bash $HOME/dotfiles/install/install
 rm -rf $HOME/dotfiles
 
 # reload .basrc
-source $HOME/.bashrc
+. $HOME/.bashrc
