@@ -22,11 +22,10 @@ __prompt_command() {
     local red='\[$(tput setaf 1)\]'
     local green='\[$(tput setaf 2)\]'
     local yellow='\[$(tput setaf 3)\]'
-    local blue='\[$(tput setaf 4)\]'
+    local blue='\[$(tput setaf 39)\]'
+    local dark_blue='\[$(tput setaf 27)\]'
     local magenta='\[$(tput setaf 5)\]'
     local cyan='\[$(tput setaf 6)\]'
-    local lightred='\[$(tput setaf 9)\]'
-    local lightcyan='\[$(tput setaf 14)\]'
 
     local exit_status="\[\]"
     local user="\[\]"
@@ -38,25 +37,26 @@ __prompt_command() {
     local trailing_sep="${dollar} "
     local ps1=""
 
+    # Exit status code
     if [ "${exit_code}" != 0 ]; then
         exit_status="[${bold}${red}${exit_code}${reset}]"
     else
         exit_status="[${green}${exit_code}${reset}]"
     fi
-
+    # Set red if root user
     if [ "$(id --user)" -eq 0 ]; then
         user="${bold}${red}\u${reset}"
     else
-        user="${blue}\u${reset}"
+        user="${dark_blue}\u${reset}"
     fi
-
+    # SSh
     if [ -z "${SSH_CLIENT}" ]; then
-        host="${cyan}\h${reset}"
+        host="${blue}\h${reset}"
     else
         if [ -z "${SSH_AUTH_SOCK}" ]; then
-            host="${lightcyan}\h${reset}"
+            host="${yellow}\h${reset}"
         else
-            host="${lightcyan}\h(*)${reset}"
+            host="${yellow}\h${reset}"
         fi
     fi
 
@@ -77,7 +77,7 @@ __prompt_command() {
         venv="${yellow}(venv:$(basename "${VIRTUAL_ENV}"))${reset} "
     fi
 
-    # Concatenation des elements
+    # Concatenate elements
     ps1="${reset}${exit_status} ${user}@${host} ${dir}${git}${venv}"
 
 
@@ -85,8 +85,6 @@ __prompt_command() {
 
     # ensure synchronization between bash memory and history file
     history -a
-    history -c
-    history -r
 }
 
 export GIT_PS1_SHOWUNTRACKEDFILES=1
