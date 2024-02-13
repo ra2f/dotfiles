@@ -27,3 +27,7 @@ msg "Updating $HOME/.hushlogin..."
 cp -f $dotfiles/.hushlogin $HOME/.hushlogin
 
 msg "Done"
+
+# Source config files
+msg "Sourcing config files"
+source ~/.bashrc
