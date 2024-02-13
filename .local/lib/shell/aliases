@@ -201,11 +201,6 @@ if type alias >/dev/null 2>/dev/null; then
         alias man='man --pager=most'
     fi
 
-    # X Window bell
-    if command -v xset >/dev/null; then
-        alias xbell-off='xset b off'
-        alias xbell-on='xset b on'
-    fi
 
     # Ignore .git when tree-ing
     alias tree='tree -I ".git"'
