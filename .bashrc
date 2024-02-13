@@ -57,3 +57,7 @@ then
 else
   alias make="make -j$(sysctl -n hw.ncpu)"
 fi
+
+# Direnv
+export DIRENV_LOG_FORMAT=""
+eval "$(direnv hook bash)"
