@@ -40,13 +40,6 @@ return {
 	},
 
 	{
-		"iamcco/markdown-preview.nvim",
-		lazy = false,
-		cmd = "MarkdownPreview",
-		build = "cd app && yarn install",
-	},
-
-	{
 		"junegunn/vim-easy-align",
 		cmd = "EasyAlign",
 	},
