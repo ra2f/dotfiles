@@ -70,7 +70,7 @@
 	lg-fmt-2 = log --format=format:'─┬─ %Cred%h%Creset %Cgreen(%aI, %ar)%Creset%C(auto)%d%Creset%n └─ %C(bold)%s%Creset %Cblue%C(bold)%an%Creset%n'
 
 	# List contributors with number of commits.
-	contributors = shortlog --summary --numbered
+	contributors = shortlog --summary --numbered --email
 
 	# Show the user email for the current repository.
 	whoami = config user.email
