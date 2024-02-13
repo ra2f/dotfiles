@@ -13,6 +13,8 @@ if type alias >/dev/null 2>/dev/null; then
     alias cp='cp --interactive --verbose'
     alias mv='mv --interactive --verbose'
 
+    #ignore upper and lowercase when TAB completion
+    bind "set completion-ignore-case on"
     # Only show changes, if available
     case $(chmod --help 2>&1) in
         --changes* | *\ --changes* | *"$(printf '\t')"--changes*)
