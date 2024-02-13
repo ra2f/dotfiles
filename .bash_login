@@ -21,10 +21,6 @@ fi
 
 unset should_launch_ssh_agent
 
-# Display
-# =========
-export DISPLAY=:0
-
 # Show who is here if it is a login, interactive shell
 # ====================================================
 
