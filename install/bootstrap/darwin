@@ -1,0 +1,28 @@
+#!/bin/bash
+set -eu
+
+msg() { printf "\033[1;34m$1\033[0m\n"; }
+err() { printf "\33[31m[✘]\33[0m $1\033[0m\n" 1>&2; return 1; }
+success() { printf "\33[32m[✔]\33[0m $1\033[0m\n"; }
+
+# Install basic dependencies
+msg "Setup code ..."
+xcode-select --install
+sudo xcodebuild -license accept
+
+msg "Installing Homebrew ..."
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+
+msg "Installing dependencies..."
+brew install git \
+             git-lfs \
+             htop \
+             jq \
+             keychain \
+             lnav \
+             python3 \
+             ripgrep \
+             shellcheck \
+             tmux \
+             tree \
+             wget

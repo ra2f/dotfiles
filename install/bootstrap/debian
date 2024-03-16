@@ -1,0 +1,33 @@
+#!/bin/bash
+set -eu
+
+# Install basic dependencies
+msg "Installing basic packages..."
+export DEBIAN_FRONTEND=noninteractive
+
+sudo apt -y update
+# utilities
+sudo apt -y install bash-completion \
+                    build-essential \
+                    curl \
+                    direnv \
+                    gcc \
+                    git-lfs \
+                    htop \
+                    jq \
+                    keychain \
+                    less \
+                    lnav \
+                    man-db \
+                    most \
+                    nano \
+                    python-is-python3 \
+                    python3 \
+                    python3-pip \
+                    python3-venv \
+                    ripgrep \
+                    shellcheck \
+                    tmux \
+                    tree \
+                    unzip \
+                    wget
