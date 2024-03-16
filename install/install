@@ -30,15 +30,8 @@ if [ -d "$dotdir" ]; then
   rm -rf $dotdir
 fi
 
-if [ is_debian ]; then
-    msg "Bootstraping for Debian..."
-    curl -fsSL https://raw.githubusercontent.com/ra2f/dotfiles/main/install/bootstrap/debian | bash
-elif [ is_darwin ]; then
-    msg "Bootstraping for Darwin..."
-    curl -fsSL https://raw.githubusercontent.com/ra2f/dotfiles/main/install/bootstrap/darwin | bash
-else
-    err "OS is not supported!"
-fi
+if is_debian; then curl -fsSL https://raw.githubusercontent.com/ra2f/dotfiles/main/install/bootstrap/debian | bash; fi
+if is_darwin; then curl -fsSL https://raw.githubusercontent.com/ra2f/dotfiles/main/install/bootstrap/darwin | bash; fi
 
 msg "Downloading dotfiles..."
 git clone git@github.com:ra2f/dotfiles.git $dotdir
