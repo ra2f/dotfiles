@@ -1,6 +1,8 @@
 #!/bin/bash
 set -eu
 
+msg "Bootstraping for Debian..."
+
 # Install basic dependencies
 msg "Installing basic packages..."
 export DEBIAN_FRONTEND=noninteractive
