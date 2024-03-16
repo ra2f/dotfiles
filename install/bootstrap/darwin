@@ -8,10 +8,6 @@ success() { printf "\33[32m[✔]\33[0m $1\033[0m\n"; }
 msg "Bootstraping for Darwin..."
 
 # Install basic dependencies
-msg "Setup code ..."
-xcode-select --install || true
-sudo xcodebuild -license accept
-
 msg "Installing Homebrew ..."
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
