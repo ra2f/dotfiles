@@ -36,9 +36,8 @@ if is_darwin; then curl -fsSL https://raw.githubusercontent.com/ra2f/dotfiles/ma
 msg "Downloading dotfiles..."
 git clone git@github.com:ra2f/dotfiles.git $dotdir
 
-# extglob for negative pattern matching, dotglob to match dotfiles
-shopt -s extglob
-# (v)erbose, (f)orce
-cp -rf --remove-destination $dotdir/.!(@(|.)|git|*swp|install) $homedir 
-# (all dotfiles except not ., .., .git, .gitignore, etc)
-shopt -u extglob
+msg "Copying configuration files ..."
+cp -rf $dotdir/.config $homedir
+cp -rf $dotdir/.local $homedir
+cp -rf $dotdir/.bash* $homedir
+cp -rf $dotdir/.hushlogin $homedir
