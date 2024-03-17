@@ -79,11 +79,11 @@ if type alias >/dev/null 2>/dev/null; then
     alias rchmod-private-with-group='chmod -R ug=rwX,o='
 
     # common chown invocations
-    chown-mine () {
+    chown_mine () {
         sudo chown "$(id -un):$(id -gn)" "$@"
     }
-    rchown-mine () {
-        chown-mine -R "$@"
+    rchown_mine () {
+        chown_mine -R "$@"
     }
 
     # Debian and Ubuntu

@@ -44,7 +44,7 @@ __prompt_command() {
         exit_status="[${green}${exit_code}${reset}]"
     fi
     # Set red if root user
-    if [ "$(id --user)" -eq 0 ]; then
+    if [ "$(id -u)" -eq 0 ]; then
         user="${bold}${red}\u${reset}"
     else
         user="${dark_blue}\u${reset}"

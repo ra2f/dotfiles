@@ -11,15 +11,29 @@ msg "Installing Homebrew ..."
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 msg "Installing dependencies..."
-brew install git \
+brew install bash \
+             bash-completion \
+             coreutils \
+             direnv \
+             findutils \
+             gawk \
+             git \
              git-lfs \
+             gnu-sed \
+             gnu-tar \
+             grep \
              htop \
              jq \
              keychain \
              lnav \
+             nvim \
              python3 \
              ripgrep \
              shellcheck \
              tmux \
              tree \
-             wget
+             wget \
+             zip
+
+# Change bash
+sudo chpass -s /opt/homebrew/bin/bash $(whoami)
