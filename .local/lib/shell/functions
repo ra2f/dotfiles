@@ -49,12 +49,12 @@ ccat() {
 # shellcheck disable=SC2185
 case $(find --help 2>/dev/null) in
     *-xtype*)
-        find-broken() {
+        find_broken() {
             find "$@" -xtype l -print
         }
         ;;
     *)
-        find-broken() {
+        find_broken() {
             # shellcheck disable=SC2039
             find "$@" -type l ! -exec test -e {} \; -print
         }
@@ -62,7 +62,7 @@ case $(find --help 2>/dev/null) in
 esac
 
 # Find empty directories
-find-empty() {
+find_empty() {
     find "$@" -type d -empty -print
 }
 
@@ -209,7 +209,7 @@ hex2dec() {
     ) | bc --quiet
 }
 
-hex2dec-pp() {
+hex2dec_pp() {
     print_args_or_stdin "$@" | hex2dec | _pprint_dec_number
 }
 
@@ -220,7 +220,7 @@ hex2oct() {
     ) | bc --quiet
 }
 
-hex2oct-pp() {
+hex2oct_pp() {
     print_args_or_stdin "$@" | hex2oct | _pprint_oct_number
 }
 
@@ -231,7 +231,7 @@ hex2bin() {
     ) | bc --quiet
 }
 
-hex2bin-pp() {
+hex2bin_pp() {
     print_args_or_stdin "$@" | hex2bin | _pprint_bin_number
 }
 
@@ -242,7 +242,7 @@ dec2hex() {
     ) | bc --quiet
 }
 
-dec2hex-pp() {
+dec2hex_pp() {
     print_args_or_stdin "$@" | dec2hex | _pprint_hex_number
 }
 
@@ -253,7 +253,7 @@ dec2oct() {
     ) | bc --quiet
 }
 
-dec2oct-pp() {
+dec2oct_pp() {
     print_args_or_stdin "$@" | dec2oct | _pprint_oct_number
 }
 
@@ -264,7 +264,7 @@ dec2bin() {
     ) | bc --quiet
 }
 
-dec2bin-pp() {
+dec2bin_pp() {
     print_args_or_stdin "$@" | dec2bin | _pprint_bin_number
 }
 
@@ -275,7 +275,7 @@ oct2hex() {
     ) | bc --quiet
 }
 
-oct2hex-pp()  {
+oct2hex_pp()  {
     print_args_or_stdin "$@" | oct2hex | _pprint_hex_number
 }
 
@@ -286,7 +286,7 @@ oct2dec() {
     ) | bc --quiet
 }
 
-oct2dec-pp() {
+oct2dec_pp() {
     print_args_or_stdin "$@" | oct2dec | _pprint_dec_number
 }
 
@@ -297,7 +297,7 @@ oct2bin() {
     ) | bc --quiet
 }
 
-oct2bin-pp() {
+oct2bin_pp() {
     print_args_or_stdin "$@" | oct2bin | _pprint_bin_number
 }
 
@@ -308,7 +308,7 @@ bin2hex() {
     ) | bc --quiet
 }
 
-bin2hex-pp() {
+bin2hex_pp() {
     print_args_or_stdin "$@" | bin2hex | _pprint_hex_number
 }
 
@@ -319,7 +319,7 @@ bin2dec() {
     ) | bc --quiet
 }
 
-bin2dec-pp() {
+bin2dec_pp() {
     print_args_or_stdin "$@" | bin2dec | _pprint_dec_number
 }
 
@@ -330,7 +330,7 @@ bin2oct() {
     ) | bc --quiet
 }
 
-bin2oct-pp() {
+bin2oct_pp() {
     print_args_or_stdin "$@" | bin2oct | _pprint_oct_number
 }
 
