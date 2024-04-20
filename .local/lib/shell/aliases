@@ -3,6 +3,9 @@
 
 # alias may be unavailable, for example in busybox shell
 if type alias >/dev/null 2>/dev/null; then
+    # Allow sudo to execute aliases
+    alias sudo='sudo '
+
     # Be verbose!
     alias mkdir='mkdir --verbose'
     alias mount='mount --verbose'
@@ -54,10 +57,23 @@ if type alias >/dev/null 2>/dev/null; then
     alias ...='cd ../..'
     alias ....='cd ../../..'
 
-    ## Colorize the grep command output for ease of use (good for log files)##
+    # Bat
+    alias cat='bat'
+    alias bathelp='bat --plain --language=help'
+    help() {
+        "$@" --help 2>&1 | bathelp
+    }
+
+    # Ripgrep
+    alias rg='rg --colors 'match:bg:cyan' --colors 'match:fg:black' --colors 'line:fg:green''
+
+    # Colorize the grep command output for ease of use (good for log files)##
     alias grep='grep --color=auto'
     alias egrep='egrep --color=auto'
     alias fgrep='fgrep --color=auto'
+
+    # Colorize tree
+    alias tree='tree -Csuh'
 
     # readable output
     alias df='df -h'
@@ -198,7 +214,11 @@ if type alias >/dev/null 2>/dev/null; then
         alias man='man --pager=most'
     fi
 
-
     # Ignore .git when tree-ing
     alias tree='tree -I ".git"'
+
+
+    # Network
+    alias ip="curl -s ipinfo.io | jq -r '.ip'"
+    alias ipl="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
 fi

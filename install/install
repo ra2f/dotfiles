@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -eu
 
 dotdir=/tmp/dotfiles
 homedir=$HOME
@@ -26,7 +26,7 @@ is_debian() {
 
 # Remove any previous installation and install dotfiles
 if [ -d "$dotdir" ]; then
-  err "$dotdir alredy exist! Removing ..."
+  msg "$dotdir alredy exist! Removing ..."
   rm -rf $dotdir
 fi
 
@@ -40,4 +40,3 @@ msg "Copying configuration files ..."
 cp -rf $dotdir/.config $homedir
 cp -rf $dotdir/.local $homedir
 cp -rf $dotdir/.bash* $homedir
-cp -rf $dotdir/.hushlogin $homedir
