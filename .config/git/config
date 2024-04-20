@@ -5,6 +5,8 @@
 	whitespace = fix # Detect whitespace errors when applying a patch.
 [branch]
 	sort = -committerdate # Show most recently changed branches first.
+[color]
+	ui = auto
 [color "branch"]
 	current = yellow reverse
 	local = yellow
@@ -32,7 +34,17 @@
 	excludesFile = ~/.config/git/ignore
 	pager = less --quit-if-one-screen --RAW-CONTROL-CHARS --no-init --chop-long-lines
 	autocrlf = input
-	editor = nvim
+	editor = vim
+	# Speed up commands involving untracked files such as `git status`.
+    # https://git-scm.com/docs/git-update-index#_untracked_cache
+    untrackedCache = true
+
+    # Treat
+    #  - spaces before tabs,
+    #  - lines that are indented with tabs,
+    #  - all kinds of trailing whitespace
+    # as an error.
+    whitespace = space-before-tab,trailing-space,tab-in-indent
 [filter "lfs"]
     clean = git-lfs clean -- %f 
     smudge = git-lfs smudge -- %f
@@ -53,6 +65,59 @@
     autoSetupRemote = true
     followTags = true
 [rebase]
+    # Use --autosquash by default. It's not like one would write !fixup message by accident.
+    autoSquash = true
+
+    # Use --autostash when running git pull --rebase and when rebasing interactively
     autoStash = true
+
+    # Warn about removed commits in interactive mode
+    missingCommitsCheck = warn
+[rerere]
+    # Reuse recorded resolutions
+    enabled = true
 [status]
+    # Show all untracked files in untracked directories
+    showUntrackedFiles = all
     submodulesummary = 1
+[submodule]
+    # Automatically update submodules when pulling
+    recurse = true
+[help]
+    # Automatically correct and execute mistyped commands
+    autocorrect = 1
+[pretty]
+    colourful = "format:%Cred%<(8)%h%Creset %<(75,trunc)%s %Cgreen%<(11)%cr%Creset%Cblue%<(17)% aN%Creset%C(yellow)% D%Creset %gN"
+    live = "format:%Cred%<(6)%h%Creset %<(50,trunc)%s%C(yellow)% D%Creset %gN"
+# URL shorthands
+# 
+# See `git help config` and search for "url.<base>"
+# 
+# gh: is a shorthand for git@github.com
+[url "git@github.com:"]
+
+    insteadOf = "gh:"
+    pushInsteadOf = "github:"
+    pushInsteadOf = "git://github.com/"
+
+# github: is a shorthand for git://github.com/
+[url "git://github.com/"]
+
+    insteadOf = "github:"
+
+# gst: is a shorthand for git://gist.github.com/
+[url "git@gist.github.com:"]
+
+    insteadOf = "gst:"
+    pushInsteadOf = "gist:"
+    pushInsteadOf = "git://gist.github.com/"
+
+# gist: is a shofthand for git://gist.github.com/
+[url "git://gist.github.com/"]
+
+    insteadOf = "gist:"
+
+# Instruct Git to not guess user.name and user.email, but only allow
+# commits if they are set in configuration
+[user]
+    useConfigOnly = true

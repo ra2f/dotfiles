@@ -1,0 +1,22 @@
+# -*- mode: sh -*-
+
+history_length=10000
+history_file="$HOME/.${cur_shell}_history"
+
+
+export HISTFILE=$history_file
+export HISTFILESIZE=$history_length
+export HISTSIZE=$history_length
+
+# note: this causes things to be ignored in interactive history as well
+# but we circumvent that with comint/emacs shells
+export HISTIGNORE="cd*:ls*:clear:date:pwd:mpv:pfetch:mpc*:music*:ltheme"
+
+shopt -s histappend
+export HISTCONTROL=ignoredups:erasedups:ignorespace
+
+# store things in the history file as we go along
+# also expand aliases
+if ! echo "$PROMPT_COMMAND"  | grep -q history; then
+  export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+fi

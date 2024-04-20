@@ -3,16 +3,6 @@
 
 export PROMPT_COMMAND=__prompt_command
 
-__prompt_width(){
-    local stripped_ps1
-    local stripped_expanded_ps1
-
-    # Remove \[...\] with non-greedy *? operator
-    stripped_ps1="$(echo -n "$1" | perl -pe 's|\\\[.*?\\\]||g')"
-    stripped_expanded_ps1="${stripped_ps1@P}"
-    echo -n "${#stripped_expanded_ps1}"
-}
-
 __prompt_command() {
     local exit_code="$?" # This needs to be first
     local dollar="\\\$"
@@ -53,17 +43,13 @@ __prompt_command() {
     if [ -z "${SSH_CLIENT}" ]; then
         host="${blue}\h${reset}"
     else
-        if [ -z "${SSH_AUTH_SOCK}" ]; then
-            host="${yellow}\h${reset}"
-        else
-            host="${yellow}\h${reset}"
-        fi
+        host="${yellow}\h${reset}"
     fi
 
-    dir="${magenta}\w${reset} "
+    dir="${magenta}\W${reset} "
 
     # GIT
-    if command -v git >/dev/null && command -v __git_ps1 >/dev/null && git rev-parse --git-dir >/dev/null 2>&1; then
+    if command -v __git_ps1 >/dev/null && git rev-parse --git-dir >/dev/null 2>&1; then
         if [ -z "$(git status --porcelain)" ]; then
             # Clean repo
             git="${green}\$(__git_ps1 '(%s)')${reset} "
@@ -80,11 +66,7 @@ __prompt_command() {
     # Concatenate elements
     ps1="${reset}${exit_status} ${user}@${host} ${dir}${git}${venv}"
 
-
     PS1="${term_title}${ps1}${trailing_sep}"
-
-    # ensure synchronization between bash memory and history file
-    history -a
 }
 
 export GIT_PS1_SHOWUNTRACKEDFILES=1
