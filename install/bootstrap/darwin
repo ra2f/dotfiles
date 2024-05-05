@@ -48,3 +48,8 @@ brew install bash \
 
 # Change bash
 sudo chpass -s /opt/homebrew/bin/bash $(whoami)
+
+# Yabai 
+brew install koekeishiya/formulae/yabai
+yabai --start-service
+brew install koekeishiya/formulae/skhd
