@@ -1,9 +1,6 @@
 #!/bin/bash
 set -eu
 
-dotdir=/tmp/dotfiles
-homedir=$HOME
-
 msg() { printf "\033[1;34m$1\033[0m\n"; }
 err() { printf "\33[31m[✘]\33[0m $1\033[0m\n" 1>&2; return 1; }
 success() { printf "\33[32m[✔]\33[0m $1\033[0m\n"; }
@@ -24,19 +21,15 @@ is_debian() {
   fi
 }
 
-# Remove any previous installation and install dotfiles
-if [ -d "$dotdir" ]; then
-  msg "$dotdir alredy exist! Removing ..."
-  rm -rf $dotdir
-fi
-
 if is_debian; then curl -fsSL https://raw.githubusercontent.com/ra2f/dotfiles/main/install/bootstrap/debian | bash; fi
 if is_darwin; then curl -fsSL https://raw.githubusercontent.com/ra2f/dotfiles/main/install/bootstrap/darwin | bash; fi
 
 msg "Downloading dotfiles..."
-git clone git@github.com:ra2f/dotfiles.git $dotdir
+cd $(mktemp -d)
+wget https://codeload.github.com/ra2f/dotfiles/zip/refs/heads/main && unzip main
+cd dotfiles-main
 
 msg "Copying configuration files ..."
-cp -rf $dotdir/.config $homedir
-cp -rf $dotdir/.local $homedir
-cp -rf $dotdir/.bash* $homedir
+cp -rf .config $HOME
+cp -rf .local $HOME
+cp -rf .bash* $HOME
