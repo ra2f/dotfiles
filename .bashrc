@@ -10,7 +10,7 @@ fi
 
 ### shell options
 # set shell options
-set -o ignoreeof        # prevent Ctrl+D from exiting terminal
+#set -o ignoreeof        # prevent Ctrl+D from exiting terminal
 shopt -s cdspell        # allow minor misspellings in `cd` commands
 shopt -s checkhash      # reference command hash table for executables
 shopt -s checkwinsize   # update LINES and COLUMNS after each command
@@ -69,3 +69,27 @@ complete -f -o default -X '!*.+(bz2|BZ2)'    bunzip2
 complete -f -o default -X '!*.+(zip|ZIP|z|Z|gz|GZ|xz|XZ|bz2|BZ2)'   extract
 
 complete -f -o default -X '!*.pl'            perl perl5
+
+# Source configuration files
+# ==========================
+shell_config_dir="${HOME}/.local/lib/shell"
+
+for shell_file in aliases environment functions history prompt; do
+    if [[ -f "${shell_config_dir}/${shell_file}" ]]; then
+        source "${shell_config_dir}/${shell_file}"
+    fi
+done
+
+unset shell_file
+unset shell_config_dir
+
+# Direnv
+export DIRENV_LOG_FORMAT=""
+if type direnv &> /dev/null; then
+  eval "$(direnv hook bash)"
+fi
+
+# Zoxide # z command
+if type zoxide &> /dev/null; then
+  eval "$(zoxide init bash --cmd cd --hook prompt)"
+fi
