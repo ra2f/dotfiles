@@ -40,6 +40,7 @@ brew install bash \
              python3 \
              ripgrep \
              shellcheck \
+             ssh \
              tmux \
              tree \
              wget \

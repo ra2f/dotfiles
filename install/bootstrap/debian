@@ -34,6 +34,7 @@ sudo apt -y install bash-completion \
                     python3-venv \
                     ripgrep \
                     shellcheck \
+                    ssh \
                     tmux \
                     tree \
                     unzip \
