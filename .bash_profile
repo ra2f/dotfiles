@@ -75,28 +75,3 @@ fi
 
 # if running interactively, source .bashrc
 [ -n "$PS1" ] && source "$HOME/.bashrc"
-
-
-# Source configuration files
-# ==========================
-shell_config_dir="${HOME}/.local/lib/shell"
-
-for shell_file in aliases environment functions history prompt; do
-    if [[ -f "${shell_config_dir}/${shell_file}" ]]; then
-        source "${shell_config_dir}/${shell_file}"
-    fi
-done
-
-unset shell_file
-unset shell_config_dir
-
-# Direnv
-export DIRENV_LOG_FORMAT=""
-if type direnv &> /dev/null; then
-  eval "$(direnv hook bash)"
-fi
-
-# Zoxide # z command
-if type zoxide &> /dev/null; then
-  eval "$(zoxide init bash --cmd cd --hook prompt)"
-fi
