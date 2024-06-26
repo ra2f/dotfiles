@@ -56,7 +56,13 @@ export SHELLCHECK_OPTS='--color'
 # =========
 
 # automatically start/connect to 'ssh-agent' as needed.
-which keychain 2>/dev/null > /dev/null && eval $(keychain --eval --quiet --noask ~/.ssh/id_ed25519)
+should_launch_ssh_agent() {
+    [[ -x /usr/bin/ssh-agent ]] && [[ -z "${SSH_AGENT_PID}" ]] && [[ -z "${SSH_TTY}" ]]
+}
+
+if should_launch_ssh_agent; then
+    eval $(keychain --quiet --noask --eval)
+fi
 
 # Show who is here if it is a login, interactive shell
 # ====================================================
