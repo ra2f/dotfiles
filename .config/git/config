@@ -63,7 +63,6 @@
     ff = only
 [push]
     autoSetupRemote = true
-    followTags = true
 [rebase]
     # Use --autosquash by default. It's not like one would write !fixup message by accident.
     autoSquash = true
