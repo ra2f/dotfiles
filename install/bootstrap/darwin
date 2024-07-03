@@ -54,3 +54,7 @@ sudo chpass -s /opt/homebrew/bin/bash $(whoami)
 brew install koekeishiya/formulae/yabai
 yabai --start-service
 brew install koekeishiya/formulae/skhd
+
+
+# Install extra config
+cp -rf .config/{skhd,yabai} $HOME
