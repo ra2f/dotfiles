@@ -7,6 +7,9 @@ export PATH="${PATH}:$HOME/.bin"
 # some programs (pip, notably) install into ~/.local/bin, add that to PATH too
 export PATH="${PATH}:$HOME/.local/bin"
 
+# add sbin/ to PATH
+export PATH="${PATH}:/usr/sbin/"
+
 # bash options
 export HISTCONTROL=ignoreboth
 export HISTSIZE=1000

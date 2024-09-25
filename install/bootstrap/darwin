@@ -37,6 +37,7 @@ brew install bash \
              keychain \
              lnav \
              most \
+             net-tools \
              python3 \
              ripgrep \
              shellcheck \
