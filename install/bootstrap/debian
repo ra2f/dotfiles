@@ -27,6 +27,7 @@ sudo apt -y install bash-completion \
                     lnav \
                     man-db \
                     most \
+                    net-tools \
                     nano \
                     python-is-python3 \
                     python3 \
