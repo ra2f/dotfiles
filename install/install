@@ -30,6 +30,7 @@ wget https://codeload.github.com/ra2f/dotfiles/zip/refs/heads/main && unzip main
 cd dotfiles-main
 
 msg "Copying configuration files ..."
+mkdir $HOME/.config
 cp -rf .config/{git,htop,ssh,tmux} $HOME/.config
 cp -rf .local $HOME
 cp -rf .bash* $HOME
