@@ -23,6 +23,7 @@ msg "Installing dependencies..."
 brew install bash \
              bash-completion \
              bat \
+             btop \
              coreutils \
              direnv \
              findutils \
@@ -32,19 +33,22 @@ brew install bash \
              gnu-sed \
              gnu-tar \
              grep \
-             htop \
+             imagemagick \
              jq \
              keychain \
              lnav \
              most \
              net-tools \
+             nnn \
              python3 \
              ripgrep \
              shellcheck \
              ssh \
+             starship \
              tmux \
              tree \
              wget \
+             yazi \
              zip \
              zoxide
 

@@ -8,10 +8,6 @@ export HISTFILE=$history_file
 export HISTFILESIZE=$history_length
 export HISTSIZE=$history_length
 
-# note: this causes things to be ignored in interactive history as well
-# but we circumvent that with comint/emacs shells
-export HISTIGNORE="cd*:ls*:clear:date:pwd:mpv:pfetch:mpc*:music*:ltheme"
-
 shopt -s histappend
 export HISTCONTROL=ignoredups:erasedups:ignorespace
 

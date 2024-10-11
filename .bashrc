@@ -93,3 +93,8 @@ fi
 if type zoxide &> /dev/null; then
   eval "$(zoxide init bash --cmd cd --hook prompt)"
 fi
+
+# Starship
+if type starship &> /dev/null; then
+  eval "$(starship init bash)"
+fi
