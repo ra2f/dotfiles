@@ -2,11 +2,6 @@
 
 ### environment vars
 
-# bash options
-export HISTCONTROL=ignoreboth
-export HISTSIZE=1000
-export HISTFILESIZE=5000
-
 # suppress bash deprecation warning on MacOS
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
