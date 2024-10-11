@@ -3,6 +3,11 @@
 add_newline = false
 palette = "catppuccin_mocha"
 
+[character]
+# Note the use of Catppuccin color 'peach'
+success_symbol = "[[󰄛](green) ❯](peach)"
+error_symbol = "[[󰄛](red) ❯](peach)"
+
 [env_var.YAZI_LEVEL]
 variable = "YAZI_LEVEL"
 format = "[🦆](yellow) "
@@ -45,6 +50,13 @@ modified= '[ $count](bold blue) '
 behind = '[ ](bold purple) '
 ahead = '[ ](bold purple) '
 format = '([$all_status$ahead_behind]($style))'
+
+[git_branch]
+style = "bold mauve"
+
+[directory]
+truncation_length = 4
+style = "bold lavender"
 
 [python]
 format = '[(\($virtualenv\) )]($style)${symbol} '
