@@ -98,3 +98,27 @@ fi
 if type starship &> /dev/null; then
   eval "$(starship init bash)"
 fi
+
+# SSH agent
+# automatically start/connect to 'ssh-agent' as needed.
+should_launch_ssh_agent() {
+    [[ -x /usr/bin/ssh-agent ]] && [[ -z "${SSH_AGENT_PID}" ]] && [[ -z "${SSH_TTY}" ]]
+}
+
+if should_launch_ssh_agent; then
+    eval $(keychain --quiet --noask --eval)
+fi
+
+# Show who is here if it is a login, interactive shell
+
+if shopt -q login_shell && [[ $- == *i* ]]; then
+  if [[ -f "/proc/${PPID}/cmdline" ]]; then
+    case "$(tr '\0' ' ' <"/proc/${PPID}/cmdline")" in
+        login* | sshd*)
+            if command -v who-is-here >/dev/null; then
+                who-is-here
+            fi
+            ;;
+    esac
+  fi
+fi
