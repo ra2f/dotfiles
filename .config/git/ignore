@@ -3,3 +3,6 @@
 
 ### Misc ###
 tmp/
+
+### MacOS ###
+.DS_Store

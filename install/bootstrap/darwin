@@ -27,6 +27,7 @@ brew install bash \
              coreutils \
              direnv \
              findutils \
+             fzf \
              gawk \
              git \
              git-lfs \
@@ -43,7 +44,6 @@ brew install bash \
              python3 \
              ripgrep \
              shellcheck \
-             ssh \
              starship \
              tmux \
              tree \
@@ -52,8 +52,9 @@ brew install bash \
              zip \
              zoxide
 
-# Change bash
-sudo chpass -s /opt/homebrew/bin/bash $(whoami)
+# Terminal
+echo "Installing Terminal..."
+brew install --cask kitty
 
 # Yabai 
 brew install koekeishiya/formulae/yabai
@@ -62,4 +63,4 @@ brew install koekeishiya/formulae/skhd
 
 
 # Install extra config
-cp -rf .config/{skhd,yabai} $HOME
+cp -rf .config/{skhd,yabai,k9s,kitty} $HOME
