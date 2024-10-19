@@ -22,21 +22,18 @@ is_debian() {
 }
 
 if is_debian; then curl -fsSL https://raw.githubusercontent.com/ra2f/dotfiles/main/install/bootstrap/debian | bash; fi
-#if is_darwin; then curl -fsSL https://raw.githubusercontent.com/ra2f/dotfiles/main/install/bootstrap/darwin | bash; fi
+if is_darwin; then curl -fsSL https://raw.githubusercontent.com/ra2f/dotfiles/main/install/bootstrap/darwin | bash; fi
 
 msg "Downloading dotfiles..."
-#cd $(mktemp -d)
-#wget https://codeload.github.com/ra2f/dotfiles/zip/refs/heads/main && unzip main
-#cd dotfiles-main
+cd $(mktemp -d)
+wget https://codeload.github.com/ra2f/dotfiles/zip/refs/heads/main && unzip main
+cd dotfiles-main
 
 msg "Copying configuration files ..."
 mkdir -p $HOME/.config
-cp -rf .config/{btop,direnv,git,ssh,tmux,yazi,starship.toml} $HOME/.config
-cp -rf .local $HOME
-cp -rf .bash* $HOME
-cp -rf .profile* $HOME
-cp -rf .vimrc $HOME
-cp -rf .curlrc $HOME
-
-
-\cp -rf .config/{skhd,yabai,k9s,kitty} $HOME/
+\cp -rf .config/{bat,btop,direnv,git,k9s,ssh,tmux,yazi,starship.toml} $HOME/.config
+\cp -rf .local $HOME
+\cp -rf .bash* $HOME
+\cp -rf .profile $HOME
+\cp -rf .vimrc $HOME
+\cp -rf .curlrc $HOME

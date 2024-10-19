@@ -74,7 +74,7 @@ complete -f -o default -X '!*.pl'            perl perl5
 # ==========================
 shell_config_dir="${HOME}/.local/lib/shell"
 
-for shell_file in aliases environment functions history prompt; do
+for shell_file in aliases environment exports functions history prompt; do
     if [[ -f "${shell_config_dir}/${shell_file}" ]]; then
         source "${shell_config_dir}/${shell_file}"
     fi
@@ -122,3 +122,6 @@ if shopt -q login_shell && [[ $- == *i* ]]; then
     esac
   fi
 fi
+
+# Paths
+export XDG_CONFIG_HOME="$HOME/.config"
