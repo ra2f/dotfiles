@@ -20,7 +20,7 @@ if [[ $(uname -s) == Darwin ]]; then
 fi
 
 msg "Installing dependencies..."
-brew install bash \
+/opt/homebrew/bin/brew install bash \
              bash-completion \
              bat \
              btop \
@@ -34,13 +34,13 @@ brew install bash \
              gnu-sed \
              gnu-tar \
              grep \
-             imagemagick \
              jq \
+             k9s \
              keychain \
              lnav \
+             nvim \
              most \
              net-tools \
-             nnn \
              python3 \
              ripgrep \
              shellcheck \
@@ -53,14 +53,8 @@ brew install bash \
              zoxide
 
 # Terminal
-echo "Installing Terminal..."
-brew install --cask kitty
 
 # Yabai 
 brew install koekeishiya/formulae/yabai
 yabai --start-service
 brew install koekeishiya/formulae/skhd
-
-
-# Install extra config
-cp -rf .config/{skhd,yabai,k9s,kitty} $HOME
