@@ -43,7 +43,6 @@ msg "Installing dependencies..."
              lnav \
              nvim \
              most \
-             net-tools \
              python3 \
              ripgrep \
              shellcheck \
