@@ -99,14 +99,9 @@ if type starship &> /dev/null; then
   eval "$(starship init bash)"
 fi
 
-# SSH agent
-# automatically start/connect to 'ssh-agent' as needed.
-should_launch_ssh_agent() {
-    [[ -x /usr/bin/ssh-agent ]] && [[ -z "${SSH_AGENT_PID}" ]] && [[ -z "${SSH_TTY}" ]]
-}
-
-if should_launch_ssh_agent; then
-    eval $(keychain --quiet --noask --eval)
+# Kubectl
+if type kubectl &> /dev/null; then
+  source <(kubectl completion bash)
 fi
 
 # Show who is here if it is a login, interactive shell

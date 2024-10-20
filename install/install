@@ -30,10 +30,10 @@ wget https://codeload.github.com/ra2f/dotfiles/zip/refs/heads/main && unzip main
 cd dotfiles-main
 
 msg "Copying configuration files ..."
-mkdir -p $HOME/.config
-\cp -rf .config/{bat,btop,direnv,git,k9s,ssh,tmux,yazi,starship.toml} $HOME/.config
-\cp -rf .local $HOME
-\cp -rf .bash* $HOME
-\cp -rf .profile $HOME
-\cp -rf .vimrc $HOME
-\cp -rf .curlrc $HOME
+mkdir -p "$HOME"/.config
+\cp -rf .config/{bat,btop,direnv,git,k9s,ssh,tmux,yazi,starship.toml} "$HOME"/.config
+\cp -rf .local "$HOME"
+\cp -rf .bash* "$HOME"
+\cp -rf .profile "$HOME"
+\cp -rf .vimrc "$HOME"
+\cp -rf .curlrc "$HOME"
