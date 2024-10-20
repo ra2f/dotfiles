@@ -3,3 +3,5 @@ export BASH_SILENCE_DEPRECATION_WARNING=1;
 
 # Config path on macOS
 export XDG_CONFIG_HOME="$HOME/.config"
+
+export EDITOR=nvim

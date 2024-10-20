@@ -27,12 +27,14 @@ msg "Installing dependencies..."
              coreutils \
              direnv \
              findutils \
+             fluxcd/tap/flux \
              fzf \
              gawk \
              git \
              git-lfs \
              gnu-sed \
              gnu-tar \
+             go-task \
              grep \
              jq \
              k9s \
@@ -44,6 +46,7 @@ msg "Installing dependencies..."
              python3 \
              ripgrep \
              shellcheck \
+             sops \
              starship \
              tmux \
              tree \

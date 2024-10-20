@@ -4,7 +4,7 @@
 # alias may be unavailable, for example in busybox shell
 if type alias >/dev/null 2>/dev/null; then
     # Allow sudo to execute aliases
-    alias sudo='sudo '
+    alias sudo='sudo -E'
 
     # Be verbose!
     alias mkdir='mkdir --verbose'
@@ -18,23 +18,12 @@ if type alias >/dev/null 2>/dev/null; then
 
     #ignore upper and lowercase when TAB completion
     bind "set completion-ignore-case on"
-    # Only show changes, if available
-    case $(chmod --help 2>&1) in
-        --changes* | *\ --changes* | *"$(printf '\t')"--changes*)
-            alias chmod='chmod --changes'
-            ;;
-        *)
-            alias chmod='chmod --verbose'
-            ;;
-    esac
-    case $(chown --help 2>&1) in
-        --changes* | *\ --changes* | *"$(printf '\t')"--changes*)
-            alias chown='chown --changes'
-            ;;
-        *)
-            alias chown='chown --verbose'
-            ;;
-    esac
+
+    # parenting
+    alias rm='rm -I --preserve-root'
+    alias chown='chown --preserve-root'
+    alias chmod='chmod --preserve-root'
+    alias chgrp='chgrp --preserve-root'
 
     # Make "strings" never treat files as objects (more secure)
     alias strings='strings --all'
@@ -93,6 +82,9 @@ if type alias >/dev/null 2>/dev/null; then
     alias rchmod-public-with-group='chmod -R ug=rwX,o=rX'
     alias rchmod-private='chmod -R u=rwX,go='
     alias rchmod-private-with-group='chmod -R ug=rwX,o='
+
+    # Nmap
+    alias nm="nmap -sC -sV -oN nmap"
 
     # common chown invocations
     chown_mine () {
@@ -216,6 +208,10 @@ if type alias >/dev/null 2>/dev/null; then
 
     # Ignore .git when tree-ing
     alias tree='tree -I ".git"'
+
+
+    # ssh agent with keychain
+    alias ssh='eval $(keychain --dir $HOME/.cache/keychain --eval --agents ssh --quick --quiet ~/.ssh/id_ed25519) && ssh'
 
 
     # Network

@@ -51,14 +51,15 @@ curl -sS https://starship.rs/install.sh | sh -s -- -y
 curl -LO https://github.com/sxyazi/yazi/releases/latest/download/yazi-x86_64-unknown-linux-gnu.zip
 unzip yazi-x86_64-unknown-linux-gnu.zip
 rm -f yazi-x86_64-unknown-linux-gnu.zip yazi-x86_64-unknown-linux-gnu/README.md yazi-x86_64-unknown-linux-gnu/LICENSE
-mv yazi-x86_64-unknown-linux-gnu/* ~/.local/bin/
+mrkdir -p  "$HOME"/.local/bin/
+\cp -r yazi-x86_64-unknown-linux-gnu/* "$HOME"/.local/bin/
 rm -rf yazi-x86_64-unknown-linux-gnu
 
 # Install Zoxide (https://github.com/ajeetdsouza/zoxide)
 curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
 
 # Install Bat (https://github.com/sharkdp/bat)
-ln -sf /usr/bin/batcat ~/.local/bin/bat
+ln -sf /usr/bin/batcat "$HOME"/.local/bin/bat
 
 # Install Nvim
 curl -L https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz | sudo tar zxf - -C /usr/local/ --strip-components=1
