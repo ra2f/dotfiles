@@ -28,7 +28,8 @@ msg "Installing dependencies..."
              direnv \
              findutils \
              fluxcd/tap/flux \
-             fzf \
+             fd \
+             file \
              gawk \
              git \
              git-lfs \
