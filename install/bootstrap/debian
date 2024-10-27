@@ -21,9 +21,9 @@ sudo apt -y install bash-completion \
                     direnv \
                     fd \
                     file \
+                    fzf \
                     gcc \
                     git-lfs \
-                    imagemagick \
                     jq \
                     keychain \
                     less \

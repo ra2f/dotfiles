@@ -29,6 +29,7 @@ msg "Installing dependencies..."
              findutils \
              fluxcd/tap/flux \
              fd \
+             fzf \
              file \
              gawk \
              git \

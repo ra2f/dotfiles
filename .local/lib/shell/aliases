@@ -209,10 +209,14 @@ if type alias >/dev/null 2>/dev/null; then
     # Ignore .git when tree-ing
     alias tree='tree -I ".git"'
 
-
     # ssh agent with keychain
     alias ssh='eval $(keychain --dir $HOME/.cache/keychain --eval --agents ssh --quick --quiet ~/.ssh/id_ed25519) && ssh'
 
+    #tmux
+    alias tmn='tmux new -s'
+    alias tmd='tmux detach'
+    alias tma='tmux a -t'
+    alias tml='tmux ls'
 
     # Network
     alias ip="curl -s ipinfo.io | jq -r '.ip'"

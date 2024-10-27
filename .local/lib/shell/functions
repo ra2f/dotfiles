@@ -4,6 +4,14 @@
 # Misc #
 ########
 
+# `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
+# the `.git` directory, listing directories first. The output gets piped into
+# `less` with options to preserve color and line numbers, unless the output is
+# small enough for one screen.
+function tre() {
+  tree -aC -I '.git' --dirsfirst "$@" | less -FRNX
+}
+
 # Read passwords. Zsh uses "?prompt" option to display a prompt and other
 # shells (Bash, Ash, ...) use -p option, so use echo to be compatible.
 # Dash fails with "read: Illegal option -s" as this is not POSIX-compliant.
@@ -39,6 +47,10 @@ ccat() {
 
         fi
     done
+}
+
+function ssht() {
+  ssh "$*" -t 'tmux a || tmux || /bin/bash'
 }
 
 #########
