@@ -19,7 +19,7 @@ sudo apt -y install bash-completion \
                     build-essential \
                     curl \
                     direnv \
-                    fd \
+                    fd-find \
                     file \
                     fzf \
                     gcc \
