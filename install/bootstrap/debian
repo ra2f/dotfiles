@@ -48,7 +48,7 @@ sudo apt -y install bash-completion \
 mkdir -p  "$HOME"/.local/bin/
 
 # Install fd (https://github.com/sharkdp/fd)
-ln -s $(which fdfind) ~/.local/bin/fd
+ln -sfn $(which fdfind) ~/.local/bin/fd
 
 # Instaling Starship (https://github.com/starship/starship)
 curl -sS https://starship.rs/install.sh | sh -s -- -y
