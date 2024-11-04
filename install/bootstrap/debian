@@ -45,7 +45,7 @@ sudo apt -y install bash-completion \
                     unzip \
                     wget
 
-mrkdir -p  "$HOME"/.local/bin/
+mkdir -p  "$HOME"/.local/bin/
 
 # Install fd (https://github.com/sharkdp/fd)
 ln -s $(which fdfind) ~/.local/bin/fd
