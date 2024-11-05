@@ -2,7 +2,10 @@
 set -eu
 
 msg() { printf "\033[1;34m$1\033[0m\n"; }
-err() { printf "\33[31m[✘]\33[0m $1\033[0m\n" 1>&2; return 1; }
+err() {
+  printf "\33[31m[✘]\33[0m $1\033[0m\n" 1>&2
+  return 1
+}
 success() { printf "\33[32m[✔]\33[0m $1\033[0m\n"; }
 
 is_darwin() {
@@ -22,12 +25,12 @@ is_debian() {
 }
 
 if is_debian; then curl -fsSL https://raw.githubusercontent.com/ra2f/dotfiles/main/install/bootstrap/debian | bash; fi
-if is_darwin; then curl -fsSL https://raw.githubusercontent.com/ra2f/dotfiles/main/install/bootstrap/darwin | bash; fi
+#if is_darwin; then curl -fsSL https://raw.githubusercontent.com/ra2f/dotfiles/main/install/bootstrap/darwin | bash; fi
 
 msg "Downloading dotfiles..."
-cd $(mktemp -d)
-wget https://codeload.github.com/ra2f/dotfiles/zip/refs/heads/main && unzip main
-cd dotfiles-main
+#cd $(mktemp -d)
+#wget https://codeload.github.com/ra2f/dotfiles/zip/refs/heads/main && unzip main
+#cd dotfiles-main
 
 msg "Copying configuration files ..."
 mkdir -p "$HOME"/.config

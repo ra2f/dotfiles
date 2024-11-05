@@ -1,122 +1,60 @@
-[user]
-	name = FirstName LastName
-	email = first.last@example.com
-[apply]
-	whitespace = fix # Detect whitespace errors when applying a patch.
+# https://git-scm.com/docs/git-config
+
 [branch]
-	sort = -committerdate # Show most recently changed branches first.
-[color]
-	ui = auto
-[color "branch"]
-	current = yellow reverse
-	local = yellow
-	remote = green
-[color "diff"]
-	meta = yellow
-	frag = magenta bold
-	commit = yellow bold
-	old = red bold
-	new = green bold
-	whitespace = red reverse
-[color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = red bold 52
-	newNormal = green bold
-	newHighlight = green bold 22
-[color "status"]
-	added = yellow
-	changed = green
-	untracked = cyan
+  sort = -committerdate
+
 [commit]
-	template = ~/.config/git/commit
-	verbose = true
+  verbose = true
+
 [core]
-	excludesFile = ~/.config/git/ignore
-	pager = less --quit-if-one-screen --RAW-CONTROL-CHARS --no-init --chop-long-lines
-	autocrlf = input
-	editor = vim
-	# Speed up commands involving untracked files such as `git status`.
-    # https://git-scm.com/docs/git-update-index#_untracked_cache
-    untrackedCache = true
+  excludesfile = ~/.config/git/ignore
+  mergeoptions = --no-edit
+  editor = nvim
+  # pager = delta --side-by-side --line-numbers
 
-    # Treat
-    #  - spaces before tabs,
-    #  - lines that are indented with tabs,
-    #  - all kinds of trailing whitespace
-    # as an error.
-    whitespace = space-before-tab,trailing-space,tab-in-indent
-[filter "lfs"]
-    clean = git-lfs clean -- %f 
-    smudge = git-lfs smudge -- %f
-    process = git-lfs filter-process
-    required = true
-[include]
-    path = ~/.config/git/aliases
+[delta]
+  navigate = true    # use n and N to move between diff sections
+  dark = true
+
+[diff]
+  # algorithm = histogram
+  # colorMoved = default
+
+[fetch]
+  prune = true
+
 [init]
-    defaultBranch = master
-[log]
-    date = relative
-    follow = true
+  defaultBranch = main
+
+[interactive]
+  # diffFilter = delta --color-only
+
 [merge]
-    autoStash = true
+  # conflictStyle = zdiff3
+
 [pull]
-    ff = only
+	ff = only
+
 [push]
-    autoSetupRemote = true
+  default = simple
+  autoSetupRemote = true
+
 [rebase]
-    # Use --autosquash by default. It's not like one would write !fixup message by accident.
-    autoSquash = true
+  autosquash = true
 
-    # Use --autostash when running git pull --rebase and when rebasing interactively
-    autoStash = true
-
-    # Warn about removed commits in interactive mode
-    missingCommitsCheck = warn
 [rerere]
-    # Reuse recorded resolutions
-    enabled = true
-[status]
-    # Show all untracked files in untracked directories
-    showUntrackedFiles = all
-    submodulesummary = 1
-[submodule]
-    # Automatically update submodules when pulling
-    recurse = true
-[help]
-    # Automatically correct and execute mistyped commands
-    autocorrect = 1
-[pretty]
-    colourful = "format:%Cred%<(8)%h%Creset %<(75,trunc)%s %Cgreen%<(11)%cr%Creset%Cblue%<(17)% aN%Creset%C(yellow)% D%Creset %gN"
-    live = "format:%Cred%<(6)%h%Creset %<(50,trunc)%s%C(yellow)% D%Creset %gN"
-# URL shorthands
-# 
-# See `git help config` and search for "url.<base>"
-# 
-# gh: is a shorthand for git@github.com
-[url "git@github.com:"]
+  enabled = true
 
-    insteadOf = "gh:"
-    pushInsteadOf = "github:"
-    pushInsteadOf = "git://github.com/"
+[url "ssh://git@github.com/"]
+  insteadOf = https://github.com/
 
-# github: is a shorthand for git://github.com/
-[url "git://github.com/"]
+[include]
+  path = ~/.config/git/aliases
 
-    insteadOf = "github:"
+# Include os specific config (defined in macos module)
+[include]
+  path = ~/.config/git/config-macos
 
-# gst: is a shorthand for git://gist.github.com/
-[url "git@gist.github.com:"]
-
-    insteadOf = "gst:"
-    pushInsteadOf = "gist:"
-    pushInsteadOf = "git://gist.github.com/"
-
-# gist: is a shofthand for git://gist.github.com/
-[url "git://gist.github.com/"]
-
-    insteadOf = "gist:"
-
-# Instruct Git to not guess user.name and user.email, but only allow
-# commits if they are set in configuration
-[user]
-    useConfigOnly = true
+# Include additional local/private config settings
+[include]
+  path = ~/.config/git/config-local
