@@ -110,7 +110,6 @@ if (keychain --version 2>/dev/null); then
 fi
 
 # Show who is here if it is a login, interactive shell
-
 if shopt -q login_shell && [[ $- == *i* ]]; then
   if [[ -f "/proc/${PPID}/cmdline" ]]; then
     case "$(tr '\0' ' ' <"/proc/${PPID}/cmdline")" in

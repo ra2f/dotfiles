@@ -209,6 +209,9 @@ if type alias >/dev/null 2>/dev/null; then
     # Ignore .git when tree-ing
     alias tree='tree -I ".git"'
 
+    # Python venv
+    alias venv='[ -d .venv ] || python3 -m venv .venv; source .venv/bin/activate'
+
     #tmux
     alias tmn='tmux new -s'
     alias tmd='tmux detach'
