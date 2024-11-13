@@ -36,7 +36,7 @@ if type alias >/dev/null 2>/dev/null; then
     alias lla='ls -l --size --almost-all'
 
     # rm alias
-    alias rm='rm -r'
+    alias rm='rm -rf'
 
     # Fix obvious typo's
     alias cd..='cd ..'
