@@ -218,8 +218,6 @@ endif
 if "" == &shell
   if executable("/bin/bash")
     set shell=/bin/bash
-  elseif executable("/bin/zsh")
-    set shell=/bin/zsh
   elseif executable("/bin/sh")
     set shell=/bin/sh
   endif
