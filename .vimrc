@@ -45,11 +45,13 @@ set showcmd " Show the number of characters or lines in Visual mode
 
 " Indentation configuration
 set expandtab " Always use space, no tabs
+
+" Force noexpandtab on specific file types
+autocmd FileType make,makefile setlocal noexpandtab
 set shiftwidth=4
 set softtabstop=4
-set tabstop=4
-set smarttab " <Tab> in front of a line uses shiftwidth instead of tabstop or softabstop
-
+" Disable folding by default
+set nofoldenable
 " Enable folding based on indentation
 set foldmethod=indent
 set nofoldenable
@@ -57,16 +59,14 @@ set nofoldenable
 " Suffixes that get lower priority when doing tab completion for filenames.
 " These are files we are not likely to want to edit or read.
 set suffixes=~,.aux,.bak,.bbl,.brf,.blg,.cb,.dvi,.idx,.ilg,.info,.log,.lo,.o,.out,.swp,.out,.toc
-
+set suffixes=~,.aux,.bak,.bbl,.brf,.blg,.cb,.dvi,.idx,.ilg,.info,.log,.lo,.o,.out,.swp,.toc
 " Configure completion
 set wildmenu
 set wildmode=longest:full,full
 set wildignore+=*~,*.bak,*.o,*.pyc,*.pyo,*.swo,*.swp
 set wildignore+=*.dll,*.exe,*.so,*.swf,*.zip,*.tar
 set wildignore+=*/.git/*,*/.hq/*,*/.svn/*
-if exists("&wildignorecase")
-  set wildignorecase
-endif
+set wildignorecase
 
 if has('gui_running')
   " Make shift-insert work like in Xterm
@@ -80,12 +80,10 @@ set nomodeline
 
 " When displaying line numbers, don't use an annoyingly wide number column. This
 " doesn't enable line numbers -- :set number will do that. The value given is a
+" When displaying line numbers, don't use an annoyingly wide number column. This
+" doesn't enable line numbers -- :set number will do that. The value given is a
 " minimum width to use for the number column, not a fixed size.
-if v:version >= 700
-  set numberwidth=3
-endif
-
-" Always check for UTF-8 when trying to determine encodings.
+set numberwidth=3
 if &fileencodings !~? "utf-8"
   " If we have to add this, the default encoding is not Unicode.
   " We use this fact later to revert to the default encoding in plaintext/empty

@@ -37,7 +37,7 @@ shopt -u nullglob       # `ls nonexist/*` should fail, not act like `ls`
 
 ## public functions (intended for termial use)
 # find a file with a pattern in its name
-# source: http:/tldp.org/LDP/abs/html/sample-bashrc.html
+# source: http://tldp.org/LDP/abs/html/sample-bashrc.html
 function ff {
 	find . -type f -iname '*'"$*"'*' -ls ;
 }
@@ -83,6 +83,9 @@ done
 unset shell_file
 unset shell_config_dir
 
+# Paths
+export XDG_CONFIG_HOME="$HOME/.config"
+
 # Direnv
 export DIRENV_LOG_FORMAT=""
 if type direnv &> /dev/null; then
@@ -104,10 +107,8 @@ if type kubectl &> /dev/null; then
   source <(kubectl completion bash)
 fi
 
-# Keychain
-if (keychain --version 2>/dev/null); then
-	eval $(keychain --eval --agents ssh --quick --quiet --nogui "${HOME}/.ssh/id_ed25519")
-fi
+eval "$(ssh-agent -s)"
+ssh-add --apple-use-keychain ~/.ssh/id_ed25519
 
 # Show who is here if it is a login, interactive shell
 if shopt -q login_shell && [[ $- == *i* ]]; then
@@ -120,6 +121,7 @@ if shopt -q login_shell && [[ $- == *i* ]]; then
             ;;
     esac
   fi
+fi
 fi
 
 # Paths

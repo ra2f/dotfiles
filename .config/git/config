@@ -10,7 +10,6 @@
   excludesfile = ~/.config/git/ignore
   mergeoptions = --no-edit
   editor = nvim
-  # pager = delta --side-by-side --line-numbers
 
 [delta]
   navigate = true    # use n and N to move between diff sections

@@ -2,7 +2,9 @@
 
 # kill running ssh agent
 if [ -n "$SSH_AUTH_SOCK" ]; then
-	eval "$(keychain --quiet -k mine)"
+	if command -v keychain &> /dev/null; then
+		eval "$(keychain --quiet -k mine)"
+	fi
 fi
 
 # when leaving the console, clear the screen to increase privacy
