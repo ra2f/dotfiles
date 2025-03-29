@@ -1,7 +1,5 @@
 # Hide the “default interactive shell is now zsh” warning on macOS.
-export BASH_SILENCE_DEPRECATION_WARNING=1;
+export BASH_SILENCE_DEPRECATION_WARNING=1
 
-# Config path on macOS
-export XDG_CONFIG_HOME="$HOME/.config"
-
+# Set Neovim as the default editor for a modern and extensible editing experience.
 export EDITOR=nvim

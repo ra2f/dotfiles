@@ -1,4 +1,4 @@
-# -*- mode: sh -*-
+#!/usr/bin/env bash
 # https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/systemd/systemd.plugin.zsh
 
 user_commands="

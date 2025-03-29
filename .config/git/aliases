@@ -56,9 +56,9 @@
   # List branches
   ls-branches = !git reflog show --pretty=format:'%gs ~ %gd' --date=relative | grep 'checkout:' | grep -oE '[^ ]+ ~ .*' | awk -F~ '!seen[$1]++' | head -n 10 | awk -F' ~ HEAD@{' '{printf("  \\033[33m%s: \\033[36m %s\\033[0m\\n", substr($2, 1, length($2)-1), $1)}'
   # Show remote merged
-  ls-merged-branches = !git branch -r --merged | grep -v $(git default-branch)
+  ls-merged-branches = !git branch -r --merged | grep -v \"$(git default-branch)\"
   # Delete all merged branches but default
-  kill-branches = !git branch --merged | grep -v '\\b$(git default-branch)\\b' | xargs git branch -d
+  kill-branches = !git branch --merged | grep -v \"\\b$(git default-branch)\\b\" | xargs git branch -d
   # Create a new feature branch `git new-feat [ticketNum] [branchName]`
   new-feat = "!f() { args=($@); ticketNum=${args[0]}; suffix=${args[@]:1}; branchName=$([[ -n $suffix ]] && echo $ticketNum-$suffix || echo $ticketNum); git checkout -b \"${branchName}\"; }; f"
 

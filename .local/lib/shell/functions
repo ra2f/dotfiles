@@ -110,19 +110,19 @@ du2s() {
 # see also: openssl rand -base64 32
 gen_pass_alnum() {
     # Keeps alphanumeric only
-    tr --complement --delete '[:alnum:]' </dev/urandom | head --bytes="${1:-32}"
+    tr -cd '[:alnum:]' </dev/urandom | head -c "${1:-32}"
     echo ''
 }
 
 gen_pass() {
     # Keeps only non-so-special symbols
-    tr --complement --delete '[:alnum:]!%&*+,\-./?@^_' </dev/urandom | head --bytes="${1:-32}"
+    tr -cd '[:alnum:]!%&*+,\-./?@^_' </dev/urandom | head -c "${1:-32}"
     echo ''
 }
 
 gen_pass_asc() {
     # Keeps all ASCII characters.
-    tr --complement --delete '[:alnum:]!#$%&()*+,\-./:;<=>?@[\\]^_{|}' </dev/urandom | head --bytes="${1:-32}"
+    tr -cd '[:alnum:]!#$%&()*+,\-./:;<=>?@[\\]^_{|}' </dev/urandom | head -c "${1:-32}"
     echo ''
 }
 

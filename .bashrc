@@ -7,31 +7,29 @@
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
+### Shell Options
+# Enable useful shell options
+shopt -s cdspell           # Correct minor spelling errors in `cd` commands
+shopt -s checkhash         # Check command hash table for executables
+shopt -s checkwinsize      # Update LINES and COLUMNS after each command
+shopt -s cmdhist           # Save all lines of multiline commands to history
+shopt -s dotglob           # Include dotfiles in filename expansion
+shopt -s expand_aliases    # Enable alias expansion
+shopt -s extglob           # Enable extended pattern matching
+shopt -s histappend        # Append to history file instead of overwriting
+shopt -s histreedit        # Allow re-editing of failed history appending
+shopt -s histverify        # Verify and edit recalled history lines before execution
+shopt -s hostcomplete      # Enable hostname completion for words with '@'
+shopt -s lithist           # Save multiline commands with embedded newlines in history
+shopt -s nocaseglob        # Enable case-insensitive globbing
+shopt -s progcomp          # Enable programmable completion
+shopt -s promptvars        # Expand variables in the prompt
+shopt -s shift_verbose     # Print error when shifting out of bounds
+shopt -s sourcepath        #  Search PATH for source files
 
-### shell options
-# set shell options
-#set -o ignoreeof        # prevent Ctrl+D from exiting terminal
-shopt -s cdspell        # allow minor misspellings in `cd` commands
-shopt -s checkhash      # reference command hash table for executables
-shopt -s checkwinsize   # update LINES and COLUMNS after each command
-shopt -s cmdhist        # save all lines of multiline commands to history
-shopt -s dotglob        # allow globing filenames beginning with '.'
-shopt -s expand_aliases # use bash aliases
-shopt -s extglob        # use pattern matching features (ref `man bash`)
-shopt -s histappend     # append to history file instead of overwriting
-shopt -s histreedit     # allow user to re-edit failed history appending
-shopt -s histverify     # edit recalled history line before executing
-shopt -s hostcomplete   # attempt hostname completion on word containing '@'
-shopt -s lithist        # save multiline commands to history with embedded \n
-shopt -s nocaseglob     # use case insensitive globs on filename expansion
-shopt -s progcomp       # use bash programmable completion
-shopt -s promptvars     # expand vars in prompt
-shopt -s shift_verbose  # print error if shifting out of bounds
-shopt -s sourcepath     # reference PATH to find executables
-
-# unset shell options
-shopt -u mailwarn       # don't spam mail read notifications
-shopt -u nullglob       # `ls nonexist/*` should fail, not act like `ls`
+# Disable unwanted shell options
+shopt -u mailwarn          # Disable mail read notifications
+shopt -u nullglob          # Prevent `ls nonexist/*` from acting like `ls`
 
 ### functions
 
@@ -42,8 +40,8 @@ function ff {
 	find . -type f -iname '*'"$*"'*' -ls ;
 }
 
-# common completions
-complete -A hostname             rsh rcp telnet rlogin ftp ping disk
+# Define tab-completion rules for various commands to enhance usability
+complete -A hostname             rsh rcp telnet rlogin ftp
 complete -A export               printenv
 complete -A variable             export local readonly unset
 complete -A enabled              builtin
@@ -52,13 +50,14 @@ complete -A function             function
 complete -A user                 su mail finger
 complete -A helptopic            help
 complete -A shopt                shopt
-complete -A stopped   -P '%'     bg
+# Prefix job names with '%' for tab completion
+# Use the -P '%' option to prefix job numbers with '%' for job-related commands
 complete -A job       -P '%'     fg jobs disown
-complete -A directory            mkdir rmdir
+complete -A directory -o default mkdir rmdir
 complete -A directory -o default cd
 
 # compression
-complete -f -o default -X '*.+(zip|ZIP)'     zip
+complete -f -o default -X '!*.+(zip|ZIP)'    zip
 complete -f -o default -X '!*.+(zip|ZIP)'    unzip
 complete -f -o default -X '*.+(z|Z)'         compress
 complete -f -o default -X '!*.+(z|Z)'        uncompress
@@ -66,7 +65,11 @@ complete -f -o default -X '*.+(gz|GZ)'       gzip
 complete -f -o default -X '!*.+(gz|GZ)'      gunzip
 complete -f -o default -X '*.+(bz2|BZ2)'     bzip2
 complete -f -o default -X '!*.+(bz2|BZ2)'    bunzip2
-complete -f -o default -X '!*.+(zip|ZIP|z|Z|gz|GZ|xz|XZ|bz2|BZ2)'   extract
+# Define a pattern for compressed file extensions to exclude from completion
+compressed_file_pattern='!*.+(zip|ZIP|z|Z|gz|GZ|xz|XZ|bz2|BZ2)'
+complete -f -o default -X '!*.+(pl|PL)'      perl perl5
+# Apply the pattern to the 'extract' command for file completion
+complete -f -o default -X "$compressed_file_pattern"   extract
 
 complete -f -o default -X '!*.pl'            perl perl5
 
@@ -86,15 +89,18 @@ unset shell_config_dir
 # Paths
 export XDG_CONFIG_HOME="$HOME/.config"
 
+export LC_CTYPE=C
+
 # Direnv
 export DIRENV_LOG_FORMAT=""
 if type direnv &> /dev/null; then
   eval "$(direnv hook bash)"
 fi
 
-# Zoxide # z command
+# Zoxide
 if type zoxide &> /dev/null; then
   eval "$(zoxide init bash --cmd cd --hook prompt)"
+  export _ZO_DOCTOR=0
 fi
 
 # Starship
@@ -122,7 +128,3 @@ if shopt -q login_shell && [[ $- == *i* ]]; then
     esac
   fi
 fi
-fi
-
-# Paths
-export XDG_CONFIG_HOME="$HOME/.config"

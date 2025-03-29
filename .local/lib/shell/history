@@ -1,12 +1,8 @@
-# -*- mode: sh -*-
+#!/usr/bin/env bash
 
-history_length=10000
-history_file="$HOME/.bash_history"
-
-
-export HISTFILE=$history_file
-export HISTFILESIZE=$history_length
-export HISTSIZE=$history_length
+export HISTFILE="$HOME/.bash_history"
+export HISTFILESIZE=10000
+export HISTSIZE=10000
 
 shopt -s histappend
 export HISTCONTROL=ignoredups:erasedups:ignorespace

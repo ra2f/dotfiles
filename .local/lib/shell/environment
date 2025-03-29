@@ -6,9 +6,9 @@
 # Please read grep man page for further information.
 export GREP_COLORS='ne'
 
-# Use Vim
-if [[ -x /usr/bin/vim ]] || command -v vim >/dev/null; then
-    export EDITOR=vim
+# Use NVIM
+if [[ -x /usr/local/bin/nvim ]] || command -v vim >/dev/null; then
+    export EDITOR=nvim
 fi
 
 # Use most to display man pages using colors

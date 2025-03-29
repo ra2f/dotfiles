@@ -1,13 +1,11 @@
 #!/bin/bash
 
-# kill running ssh agent
-if [ -n "$SSH_AUTH_SOCK" ]; then
-	if command -v keychain &> /dev/null; then
-		eval "$(keychain --quiet -k mine)"
-	fi
+# Terminate the SSH agent if it is running
+if [ -n "$SSH_AGENT_PID" ]; then
+    kill "$SSH_AGENT_PID" 2>/dev/null || echo "Failed to terminate SSH agent"
 fi
 
-# when leaving the console, clear the screen to increase privacy
+# Clear the screen when leaving the console to increase privacy
 if [ "$SHLVL" = 1 ]; then
-	[ -x /usr/bin/clear_console ] && /usr/bin/clear_console -q
+    [ -x /usr/bin/clear_console ] && /usr/bin/clear_console -q
 fi
