@@ -68,4 +68,4 @@ curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | 
 ln -sf /usr/bin/batcat "$HOME"/.local/bin/bat
 
 # Install Nvim
-curl -L https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz | sudo tar zxf - -C /usr/local/ --strip-components=1
+curl -L https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.tar.gz | sudo tar zxf - -C /usr/local/ --strip-components=1
