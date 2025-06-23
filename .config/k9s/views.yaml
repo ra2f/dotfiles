@@ -1,24 +1,19 @@
 views:
   # Alters the pod view column layout. Uses GVR as key
   v1/pods:
-    # Overrides default sort column
     sortColumn: NAMESPACE:asc
     columns:
       - NAMESPACE
       - NAME
-      - STATUS
+      - AGE
       - READY
       - RESTARTS
-      - AGE
-      - NODE
+      - STATUS
+      - CPU
+      - MEM
+      - "%CPU/R"
+      - "%CPU/L"
+      - "%MEM/R"
+      - "%MEM/L"
       - IP
-
-  # Alters the service view column layout
-  v1/services:
-    sortColumn: NAMESPACE:asc
-    columns:
-      - NAMESPACE
-      - NAME
-      - TYPE
-      - CLUSTER-IP
-      - AGE
+      - NODE
