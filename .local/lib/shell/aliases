@@ -217,8 +217,4 @@ if type alias >/dev/null 2>/dev/null; then
     alias tmd='tmux detach'
     alias tma='tmux a -t'
     alias tml='tmux ls'
-
-    # Network
-    alias ip="curl -s ipinfo.io | jq -r '.ip'"
-    alias ipl="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
 fi
