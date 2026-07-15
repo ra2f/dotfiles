@@ -55,10 +55,3 @@ msg "Installing dependencies..."
              yazi \
              zip \
              zoxide
-
-# Terminal
-
-# Yabai 
-brew install koekeishiya/formulae/yabai
-yabai --start-service
-brew install koekeishiya/formulae/skhd

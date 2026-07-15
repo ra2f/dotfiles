@@ -113,8 +113,15 @@ if type kubectl &> /dev/null; then
   source <(kubectl completion bash)
 fi
 
-eval "$(ssh-agent -s)"
-ssh-add --apple-use-keychain ~/.ssh/id_ed25519
+# Talosctl
+if type talosctl &> /dev/null; then
+  source <(talosctl completion bash)
+fi
+
+# SSH
+if hash keychain 2>/dev/null; then
+  eval $(keychain --quiet --noask --eval --timeout 480 ~/.ssh/id_ed25519)
+fi
 
 # Show who is here if it is a login, interactive shell
 if shopt -q login_shell && [[ $- == *i* ]]; then

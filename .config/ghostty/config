@@ -1,12 +1,146 @@
 theme = catppuccin-mocha
-font-family = "Hack Nerd Font"
-font-size = 10
-window-padding-x = 4
-window-padding-y = 5
-auto-update-channel = tip
-bold-is-bright = true
-mouse-hide-while-typing = true
-mouse-scroll-multiplier = 0.5
 
-keybind=super+comma=ignore
-keybind=cmd+t=ignore
+font-family = "Hack Nerd Font"
+
+font-size = 10
+
+working-directory = home
+window-inherit-working-directory = false
+tab-inherit-working-directory = true
+split-inherit-working-directory = false
+window-inherit-font-size = false
+cursor-style-blink = false
+mouse-hide-while-typing = true
+quit-after-last-window-closed = true
+window-save-state = always
+macos-option-as-alt = left
+# macos-non-native-fullscreen = true
+macos-non-native-fullscreen = visible-menu
+quick-terminal-position = top
+quick-terminal-animation-duration = 0
+scrollback-limit = 1000000000
+resize-overlay = never
+# set height/width to a ridiculous size so it would always start in max window
+window-height = 200
+window-width = 500
+macos-window-buttons = hidden
+clipboard-paste-protection = false
+
+keybind = super+alt+ctrl+l=unbind
+keybind = super+alt+ctrl+h=unbind
+keybind = cmd+alt+ctrl+l=unbind
+keybind = cmd+alt+ctrl+h=unbind
+
+keybind = super+page_up=scroll_page_up
+keybind = super+ctrl+equal=equalize_splits
+keybind = super+physical:four=goto_tab:4
+keybind = super+shift+down=jump_to_prompt:1
+keybind = super+shift+w=close_window
+keybind = super+shift+left_bracket=previous_tab
+keybind = super+backspace=esc:
+keybind = super+alt+i=inspector:toggle
+keybind = super+w=close_surface
+keybind = super+physical:eight=goto_tab:8
+keybind = super+alt+right=goto_split:right
+keybind = shift+up=adjust_selection:up
+keybind = super+down=jump_to_prompt:1
+keybind = super+enter=toggle_fullscreen
+keybind = super+t=new_tab
+keybind = super+c=copy_to_clipboard
+keybind = super+shift+right_bracket=next_tab
+keybind = super+physical:one=goto_tab:1
+keybind = shift+left=adjust_selection:left
+keybind = super+equal=increase_font_size:1
+keybind = shift+page_up=adjust_selection:page_up
+keybind = super+physical:three=goto_tab:3
+keybind = super+right=text:\x05
+keybind = super+d=new_split:right
+# resize mode: super+r to enter, h/j/k/l to resize, escape to exit
+keybind = super+shift+r=activate_key_table:resize
+keybind = resize/h=resize_split:left,10
+keybind = resize/j=resize_split:down,10
+keybind = resize/k=resize_split:up,10
+keybind = resize/l=resize_split:right,10
+keybind = resize/escape=deactivate_key_table
+keybind = resize/catch_all=ignore
+keybind = shift+end=adjust_selection:end
+keybind = super+plus=increase_font_size:0.5
+keybind = super+q=quit
+keybind = super+home=scroll_to_top
+keybind = super+left=text:\x01
+keybind = super+shift+up=jump_to_prompt:-1
+keybind = shift+right=adjust_selection:right
+keybind = super+comma=open_config
+keybind = super+minus=decrease_font_size:0.5
+keybind = shift+page_down=adjust_selection:page_down
+keybind = ctrl+tab=next_tab
+keybind = super+a=select_all
+keybind = super+alt+down=goto_split:bottom
+keybind = super+ctrl+f=toggle_fullscreen
+keybind = super+alt+shift+j=write_scrollback_file:open,html
+keybind = shift+down=adjust_selection:down
+keybind = ctrl+shift+tab=previous_tab
+keybind = super+n=new_window
+keybind = super+alt+left=goto_split:left
+keybind = super+page_down=scroll_page_down
+keybind = super+alt+shift+w=close_all_windows
+keybind = super+alt+up=goto_split:top
+keybind = super+left_bracket=goto_split:previous
+keybind = super+physical:nine=last_tab
+keybind = super+right_bracket=goto_split:next
+keybind = super+end=scroll_to_bottom
+keybind = super+shift+j=write_scrollback_file:paste,html
+keybind = super+shift+d=new_split:down
+keybind = super+zero=reset_font_size
+keybind = super+physical:five=goto_tab:5
+keybind = shift+home=adjust_selection:home
+keybind = super+physical:seven=goto_tab:7
+keybind = super+up=jump_to_prompt:-1
+keybind = super+k=clear_screen
+keybind = super+physical:two=goto_tab:2
+keybind = super+physical:six=goto_tab:6
+keybind = super+v=paste_from_clipboard
+
+# keybind = global:cmd+ctrl+shift+opt+`=toggle_quick_terminal
+# keybind = global:ctrl+`=toggle_quick_terminal
+
+# remap cmd+p to ctrl+p
+keybind = super+p=text:\x10
+# remap cmd+shift+g to ctrl+shift+g (CSI u: 103='g', 6=1+shift+ctrl)
+keybind = super+shift+g=text:\x1b[103;6u
+# remap cmd+shift+c to ctrl+shift+c (CSI u: 99='c', 6=1+shift+ctrl)
+keybind = super+shift+c=text:\x1b[99;6u
+# remap cmd+shift+e to ctrl+shift+e (CSI u: 101='e', 6=1+shift+ctrl)
+keybind = super+shift+e=text:\x1b[101;6u
+# remap cmd+shift+m to ctrl+shift+m (CSI u: 109='m', 6=1+shift+ctrl)
+keybind = super+shift+m=text:\x1b[109;6u
+
+# search entire scrollback history in default text editor
+keybind = super+shift+f=write_screen_file:open
+
+# copy scrollback history to the clipboard
+# keybind = super+shift+f=write_screen_file:copy
+
+keybind = alt+left=unbind
+keybind = alt+right=unbind
+
+keybind = super+ctrl+h=goto_split:left
+keybind = super+ctrl+j=goto_split:bottom
+keybind = super+ctrl+k=goto_split:top
+keybind = super+ctrl+l=goto_split:right
+
+keybind = super+shift+t=prompt_tab_title
+
+keybind = super+shift+comma=move_tab:-1
+keybind = super+shift+period=move_tab:1
+
+keybind = super+shift+r=reload_config
+
+keybind = super+grave_accent=goto_window:next
+keybind = super+shift+grave_accent=goto_window:previous
+keybind = shift+enter=text:\n
+# remap ctrl+enter to CSI u ctrl+enter
+keybind = ctrl+enter=text:\x1b[13;5u
+
+# shell-integration-features = no-cursor,sudo,title
+shell-integration-features = sudo,title,ssh-env,no-ssh-terminfo

@@ -169,8 +169,6 @@
   df = diff --stat
   # Show changes that have been staged
   dfs = diff --cached
-  # Use fuzzy finder for diff
-  dfz = !git-fuzzy-diff
   # A more concise and readable git log (one line per commit)
   ls = log --oneline --decorate --pretty=format:"%C(auto,yellow)%h%C(auto)%d\\ %C(auto,reset)%s\\ \\ [%C(auto,blue)%cn%C(auto,reset),\\ %C(auto,cyan)%ar%C(auto,reset)]"
   # Display a pretty change log (fancy git log --stat --pretty=short)
