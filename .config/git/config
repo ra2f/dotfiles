@@ -50,3 +50,13 @@
 [include]
   # Include commit template
   path = ~/.config/git/commit
+
+# Commit signing
+[commit]
+  gpgsign = true
+
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  allowedSignersFile = ~/.config/git/allowed_signers
