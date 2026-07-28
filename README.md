@@ -13,8 +13,10 @@ curl -fsSL https://raw.githubusercontent.com/ra2f/dotfiles/main/install/install 
 ## Initialization
 
 ```
-git config --global user.name "New Author Name"
-git config --global user.email "<email@address.example>"
+git config --global user.name "FirstName LastName"
+git config --global user.email "<email@example.com>"
+echo "email@example.com $(cat ~/.ssh/id_ed25519.pub)" \
+  > ~/.config/git/allowed_signers
 ```
 
 ### Maintenance
