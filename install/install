@@ -42,4 +42,4 @@ cp -rf .vimrc "$HOME"
 cp -rf .curlrc "$HOME"
 
 # rebuild bat's cache
-bat cache --build
+"$HOME"/.local/bin/bat cache --build
