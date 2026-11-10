@@ -1,27 +1,46 @@
-theme = catppuccin-mocha
-font-family = "Hack Nerd Font"
-font-size = 10
+# Ghostty config. Only non-default settings are listed.
+# `ghostty +show-config --default --docs` for reference; `ghostty +list-keybinds --default` for keys.
 
-# Window Config
-macos-titlebar-style = hidden
-window-width = 140
-window-height = 30
-window-padding-y = 16,12
-window-padding-x = 16
+# --- Font & theme ---
+font-family = Maple Mono NF
+font-feature = +cv02
+font-feature = +cv05
+font-feature = +cv61
+font-feature = +cv63
+font-size = 13.0
+theme = Catppuccin Mocha
 
-# Line height
-adjust-cell-height = 65%
-adjust-cursor-height = 65%
-adjust-underline-position = 15%
-adjust-font-baseline = 9%
+# --- Window ---
+# non-native fullscreen on launch, menu bar visible (matches toggle_fullscreen below)
+fullscreen = non-native-visible-menu
+maximize = true
+window-save-state = always
+window-inherit-working-directory = false
+tab-inherit-working-directory = true
+split-inherit-working-directory = false
+window-inherit-font-size = false
+working-directory = home
+macos-window-buttons = hidden
+macos-non-native-fullscreen = visible-menu
+macos-option-as-alt = true
+quit-after-last-window-closed = true
+resize-overlay = never
+drag-handle = never
 
-# Cursor style
-cursor-style = block
+# --- Terminal behaviour ---
 cursor-style-blink = false
+mouse-hide-while-typing = true
+clipboard-paste-protection = false
+mouse-scroll-multiplier = precision:1,discrete:1
+# how long a closed tab/split can be restored with super+z
+undo-timeout = 20s
+shell-integration-features = sudo,title,ssh-env,no-ssh-terminfo
 
-# Clipboard settings
-clipboard-read = allow
-clipboard-write = allow
+# Notify when a long-running command finishes in an unfocused surface
+# (replaces the fish `done` plugin).
+notify-on-command-finish = unfocused
+notify-on-command-finish-action = no-bell,notify
+notify-on-command-finish-after = 10s
 
 # Allow option to work as alt on macos
 macos-option-as-alt = true

@@ -1,4 +1,9 @@
 # https://git-scm.com/docs/git-config
+[user]
+  # Sign commits and tags with the SSH key.
+  signingkey = ~/.ssh/id_ed25519.pub
+  # Don't guess the user's identity.
+  useConfigOnly = true
 
 [branch]
   sort = -committerdate
@@ -7,13 +12,12 @@
   verbose = true
 
 [core]
-  excludesfile = $HOME/.config/git/ignore
-  mergeoptions = --no-edit
-  editor = nvim
-
-[delta]
-  navigate = true    # use n and N to move between diff sections when using delta as a pager
-  dark = true
+  abbrev = 12
+  excludesfile = ~/.config/git/ignore
+  eol = lf
+  autocrlf = false
+  fileMode = false
+  pager = delta
 
 [diff]
   # algorithm = histogram
@@ -21,9 +25,16 @@
 
 [fetch]
   prune = true
+  pruneTag = true
 
 [init]
-  defaultBranch = main
+  defaultBranch = master
+
+[filter "lfs"]
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
 
 [interactive]
   diffFilter = delta --color-only
@@ -32,14 +43,68 @@
   # conflictStyle = zdiff3
 
 [pull]
-	ff = only
+	rebase = false
 
 [push]
-  default = simple
+  # Make `git push` automatically push relevant
+  # annotated tags when pushing branches out.
   autoSetupRemote = true
+  default = simple
+  followTags = true
 
 [rebase]
   autosquash = true
+
+[color]
+  ui = true
+
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+
+[color "diff"]
+  meta = yellow
+  frag = magenta bold
+  old = red bold
+  new = green bold
+  commit = yellow bold
+  whitespace = red reverse
+
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
+
+[delta]
+  features = catppuccin-mocha
+  syntax-theme = Catppuccin Mocha
+  navigate = true
+  line-numbers = true
+  hunk-header-style = omit
+  file-modified-label =
+  hyperlinks = true
+  true-color = always
+
+[diff "bin"]
+  # Use `hexdump` to diff binary files.
+  textconv = hexdump -v -C
+
+[pager]
+  log = delta
+  reflog = delta
+  show = delta
+  blame = delta
+  grep = delta
+
+[interactive]
+  diffFilter = delta --color-only
 
 [rerere]
   enabled = true

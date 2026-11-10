@@ -1,5 +1,8 @@
-# =============================================================================================
-# Theme
-# =============================================================================================
+# Catppuccin Mocha (theme file in ~/.config/bat/themes/, run `bat cache --build`)
+--theme="Catppuccin Mocha"
 
---theme="catppuccin_mocha"
+# Show only the file with Git modifications
+--style="changes"
+
+# Use italic text on the terminal (not supported on all terminals)
+--italic-text=always

@@ -3,6 +3,18 @@
 
 ### Misc ###
 tmp/
+*~
+%*
+*.pyc
+.credentials.json
+.env*
+!.env.template
+.envrc*
+!.envrc.template
+.vscode
+.yalc
+.DS_Store
+.claude
 
 ### MacOS ###
 .DS_Store
